@@ -365,7 +365,13 @@ html,body
     position: relative;
     top:0;
     left:0;
-    pointer-events: none;
+    transition: all 1s;
+    
+}
+
+.ContactImage:hover
+{
+    color:rgb(208, 199, 199);
 }
 
 path
