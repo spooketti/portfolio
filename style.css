@@ -85,6 +85,7 @@ html,body
     height:100%;
     top:0;
      left:0;
+     pointer-events: none;
 }
 
 #header
@@ -132,6 +133,7 @@ html,body
     top:53%;
     font-size: 5vh;
     height:0;
+    pointer-events: none;
 }
 .paraText
 {
@@ -335,13 +337,16 @@ html,body
 
 #ContactLinks
 {
-    background-color: #1f1f1f;
     display: flex;
     grid-template-rows: 1fr;
     height:10vh;
     justify-content: center;
     align-items: center;
+    background-color: #1f1f1f38;
+    gap:2%;
 }
+
+
 
 .ContactLinkButton
 {
@@ -349,5 +354,21 @@ html,body
     aspect-ratio: 1/1;
     border-radius: 50%;
     border: #1f1f1f 1px solid;
-    background-color: white;
+    overflow: hidden;
+    pointer-events: all;
+}
+
+.ContactImage
+{
+    height:100%;
+    width:auto;
+    position: relative;
+    top:0;
+    left:0;
+    pointer-events: none;
+}
+
+path
+{
+    pointer-events: none;
 }
