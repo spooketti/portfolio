@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>port</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <nav id="header">
+      <div class="headerDiv">
+        Jonathan Liu
+      </div>
+    </nav>
+    <div id="piano">
+      <div id="pianoHead">
+    
+      </div>
+      <div id="pianoBody">
+    
+        </div>
+      </div>
+      </div>
+      <div id="minesweeperWrapper" onclick="document.getElementById('minesweeperWrapper').style.display = 'none'; document.getElementById('msiframe').style.display = 'none'">
+        click anywhere to exit
+      </div>
+      <iframe width="800" height="2000" src="https://spooketti.github.io/minesweeper" id="msiframe"></iframe>
+      
+    
+      
+    <div id="paralaxWrapper">
+        <img class="paralax" id="par1" src="assets/images/par1.png">
+        <div id="ParalaxName" class="paralax paraText">
+          Jonathan Liu
+        </div>
+        <img class="paralax" id="par2" src="assets/images/par2.png">
+        <div id="ParalaxDesc" class="paralax paraText">
+          Passionate Computer Scientist • 3D Artist • Insturment Player
+          <div id="ContactLinks">
+              <div class="ContactLinkButton"></div>
+          </div>
+        </div>
+        <img class="paralax" id="par3" src="assets/images/par3.png">
+        <img class="paralax" id="par4" src="assets/images/par4.png">
+
+    </div>
+    <div class="slideable" id="AboutMe" data-slideanim="slideRight">
+      <div id="AboutMeLeft">
+        <h1 class="slideable" style="overflow:hidden;" data-slideanim="slideOpacity" data-textanim="typewriter">Jonathan Liu</h1>
+        <div class="AboutMeP">
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Malesuada bibendum arcu vitae elementum. Vel orci porta non pulvinar neque laoreet suspendisse interdum. Nulla posuere sollicitudin aliquam ultrices sagittis. Commodo elit at imperdiet dui accumsan sit. Cras ornare arcu dui vivamus arcu felis bibendum ut tristique. Consequat ac felis donec et odio pellentesque diam volutpat. Amet purus gravida quis blandit turpis cursus in hac habitasse. Dolor morbi non arcu risus quis varius quam quisque. Pulvinar mattis nunc sed blandit libero volutpat. Proin fermentum leo vel orci porta non. Magna eget est lorem ipsum dolor sit. Elit at imperdiet dui accumsan sit amet nulla. Urna cursus eget nunc scelerisque viverra mauris. Varius quam quisque id diam vel quam elementum pulvinar. Facilisis leo vel fringilla est ullamcorper eget nulla.
+          </p>
+        </div>
+      </div>
+      <div id="AboutMeCenter">
+        <h1 class="slideable" style="overflow:hidden" data-slideanim="slideOpacity" data-textanim="typewriter">ABOUT ME</h1>
+        <img src="assets/images/me.png" id="AboutMeImg">
+        <div class="AboutMeP">
+
+        </div>
+      </div>
+      <div id="AboutMeRight">
+        <h1 class="slideable" style="overflow:hidden;" data-slideanim="slideOpacity" data-textanim="typewriter">My Skills</h1>
+        <div class="AboutMeP">
+          <p>
+            Unity C#
+            <br>
+            Front End Development: <span onclick="togglePiano()" style="color:orange;">HTML</span>, <span onclick="mineSweepToggle()" style="color:rgb(208, 208, 32)">JS</span>, <span style="color:rgb(42, 172, 211)" onclick="spinBody()">CSS<span style="font-size:small; color:gray;">(click these!)</span></span>
+            <br>
+            Blender 3D
+            <br>
+            Piano, Guitar (acoustic/electric)
+            <br>
+            Photoshop
+            <br>
+            Back End Development: Python, Java, C++, Google Firebase
+            <br>
+            Arduino Hardware Projects
+          </p>
+        </div> 
+      </div>
+    </div>
+	<script src="assets/js/script.js"></script>
+  <script src="assets/js/piano.js"></script>
+  </body>
+</html>
