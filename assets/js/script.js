@@ -38,6 +38,9 @@ const observer = new IntersectionObserver((entries) =>
                 case "slideOpacity":
                     entry.target.style.animation += "slideOpacity 1s cubic-bezier(.77,.27,.48,.9)"
                 break;
+                case "slideLeft":
+                    entry.target.style.animation += "slideLeft 1s cubic-bezier(.77,.27,.48,.9)"
+                break;
 
                 default:
                    
