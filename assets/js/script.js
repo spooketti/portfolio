@@ -15,6 +15,7 @@ redMotDict =
     false: "Off",
 }
 let redMotButton = document.getElementById("redMotButton")
+redMotButton.innerText = "Reduced Motion: " + redMotDict[reducedMotion]
 function toggleMot()
 {
     reducedMotion = !reducedMotion
