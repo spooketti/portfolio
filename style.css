@@ -462,12 +462,18 @@ path
 {
     width:100%;
     background-color: white;
-    aspect-ratio: 5/1;
+    aspect-ratio: 1/1;
+    transition: all .25s;
 }
 
 #ProjectsContainer:has(div:hover)
 {
     background-size: 6vmin 6vmin;
+}
+
+.ProjectCard:hover
+{
+    transform:scale(120%);
 }
 
 .ProjectImage

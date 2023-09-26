@@ -23,12 +23,14 @@ let slideClassArray = [
 
 const observer = new IntersectionObserver((entries) => 
 {
+    
     entries.forEach((entry) =>
     
     {   
         entry.target.style.animation = null;
-        if(entry.isIntersecting )
+        if(entry.isIntersecting && !spinning)
         {
+
             switch(entry.target.dataset.slideanim)
             {
                 case "slideRight":
