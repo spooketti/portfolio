@@ -99,15 +99,15 @@ html,body
     z-index: 1;
     transition: all .5s;
     color:white;
+    display:flex;
+    justify-content: space-between;
 }
 
 .headerDiv
 {
-    position:absolute;
     display: flex;
     height:100%;
     width:10%;
-    left:0;
     font-family: 'DM Sans', sans-serif;
     
     align-items: center;

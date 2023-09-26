@@ -3,6 +3,25 @@ let topDist
 let navbarVis = true
 let navBar = document.getElementById("header")
 let spinning = false
+let reducedMotion = false
+if(localStorage.reducedMotion)
+{
+    reducedMotion = localStorage.reducedMotion
+}
+localStorage.reducedMotion = reducedMotion
+redMotDict = 
+{
+    true: "On",
+    false: "Off",
+}
+let redMotButton = document.getElementById("redMotButton")
+function toggleMot()
+{
+    reducedMotion = !reducedMotion
+    localStorage.reducedMotion = reducedMotion
+    redMotButton.innerText = "Reduced Motion: " + redMotDict[reducedMotion]
+}
+
 window.addEventListener("scroll",function(e)
 {
     topDist = this.scrollY
@@ -28,7 +47,7 @@ const observer = new IntersectionObserver((entries) =>
     
     {   
         entry.target.style.animation = null;
-        if(entry.isIntersecting && !spinning)
+        if(entry.isIntersecting && !spinning && !reducedMotion)
         {
 
             switch(entry.target.dataset.slideanim)
