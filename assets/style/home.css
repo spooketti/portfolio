@@ -379,7 +379,10 @@ path
     width:100%;
     background-color: white;
     aspect-ratio: 1/1;
-    transition: all .25s;
+    transition: transform .25s;
+    color:black;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 #ProjectsContainer:has(div:hover)
@@ -387,15 +390,32 @@ path
     background-size: 6vmin 6vmin;
 }
 
-.ProjectCard:hover
+.ProjectCard:hover:not(.redirectCard)
 {
-    transform:scale(120%);
+    transform:rotate(5deg);
 }
+
+
 
 .ProjectImage
 {
     width:98%;
     height:auto;
     pointer-events: none;
-    padding:1%
+    padding:1%;
+    aspect-ratio: 4/3;
+}
+
+.redirectCard
+{
+    position: fixed;
+    left:0%;
+    top:0%;
+    width:33%;
+    z-index: 10;
+    /*
+    height:100%;
+    width:100%;
+    
+    */
 }

@@ -32,3 +32,12 @@ function mineSweepToggle()
 document.getElementById("minesweeperWrapper").style.display = "flex"
 document.getElementById("msiframe").style.display = "block"
 }
+
+function cardZoom(el)
+{
+el.classList.add("redirectCard")
+el.style.transform = "translateX(105%)"
+setTimeout(() => {
+    el.style.transform = "translateX(105%) scale(1000%)"
+}, 1000);
+}
