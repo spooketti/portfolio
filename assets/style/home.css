@@ -385,6 +385,7 @@ path
     text-overflow: ellipsis;
 }
 
+
 #ProjectsContainer:has(div:hover)
 {
     background-size: 6vmin 6vmin;
@@ -419,3 +420,8 @@ path
     
     */
 }
+ 
+
+  
+  
+  

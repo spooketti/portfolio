@@ -38,6 +38,11 @@ function cardZoom(el)
 el.classList.add("redirectCard")
 el.style.transform = "translateX(105%)"
 setTimeout(() => {
+    el.style.transition = "all 1s cubic-bezier(.25,-0.16,.1,.98)"
     el.style.transform = "translateX(105%) scale(1000%)"
+    setTimeout(() => { //i assure you this is optimized
+        el.style.filter = "brightness(-500%)"
+    }, 200);
 }, 1000);
+
 }
