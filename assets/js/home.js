@@ -42,6 +42,13 @@ setTimeout(() => {
     el.style.transform = "translateX(105%) scale(1000%)"
     setTimeout(() => { //i assure you this is optimized
         el.style.filter = "brightness(-500%)"
+        setTimeout(() => { //i assure you this is optimized
+           // el.style.filter = "brightness(-500%)"
+            window.location = el.dataset.cardurl
+            //alert(el.dataset.cardurl)
+        }, 200);
+        //window.location = el.dataset.cardurl
+        //alert(el.dataset.cardurl)
     }, 200);
 }, 1000);
 
