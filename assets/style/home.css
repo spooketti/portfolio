@@ -388,6 +388,7 @@ path
     color:black;
     overflow: hidden;
     text-overflow: ellipsis;
+    font-family: 'Nanum Gothic', sans-serif;
 }
 
 
