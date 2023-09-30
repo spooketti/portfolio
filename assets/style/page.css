@@ -9,7 +9,6 @@ html,body
    overflow-x: clip;
    background-color: #1f1f1f;
    color:white;
-   padding-top:3%;
    font-family: 'Nanum Gothic', sans-serif;
 }
 /*but y tho*/
@@ -61,4 +60,28 @@ html,body
 }
 
 
+.articleParallax
+{
+    position:relative;
+    top:0;
+    left:0;
+    width:100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /*define the height in html*/
+  
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 
+.artParText
+{
+    font-size: xx-large;
+    font-family: 'Red Hat Display', sans-serif;
+    color:white;
+    background-color: rgba(0, 0, 0, 0.163);
+}
