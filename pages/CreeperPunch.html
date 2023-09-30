@@ -23,6 +23,15 @@
     <link rel="stylesheet" href="../assets/style/page.css">
     <link rel="stylesheet" href="../assets/style/slideAnim.css">
     <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/arduino.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/python.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
   </head>
   <body>
     <div class="loadModal">
@@ -38,9 +47,55 @@
         error
       </div>
     </nav>
-    <div class="slideable" id="AboutMe" data-slideanim="slideRight">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/cMuKp44WRo8?si=3kUoj1MrRuyRHy14" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    <img src="../assets/images/ArduinoCreeper.jpg">
+    <pre><code>
+      #define ECHO 9
+      #define TRIG 8
       
-    </div>
+      void setup() {
+      Serial.begin(9600);
+      pinMode(TRIG,OUTPUT);
+      pinMode(ECHO,INPUT);
+      }
+      
+      long duration;
+      long distance;
+      
+      void loop() {
+         digitalWrite(TRIG, LOW);
+        delayMicroseconds(5);
+        // Sets the trigPin on HIGH state for 10 micro seconds
+        digitalWrite(TRIG, HIGH);
+        delayMicroseconds(10);
+        digitalWrite(TRIG, LOW);
+        // Reads the echoPin, returns the sound wave travel time in microseconds
+        duration = pulseIn(ECHO, HIGH);
+        // Calculating the distance
+        distance = (duration/2) / 29.1;
+        Serial.println(distance);
+      
+        delay(250);
+      
+      }
+      </code></pre>
+      <pre><code>
+        from serial import Serial
+        from pynput.mouse import Button, Controller
+        
+        mouse = Controller()
+        ser = Serial('COM3',9600) #COM3 is my port, use whatever the port is for your computer
+        if not ser.isOpen():
+          print("Please open your port")
+        else:
+          while(True):
+            input_data=ser.readline().strip().decode("utf-8")
+            input_data = int(input_data)
+            #print(input_data)
+            if(input_data <= 20):
+              print(input_data)
+              mouse.click(Button.left,10)</code></pre>
+              
     <footer>
       
     </footer>
