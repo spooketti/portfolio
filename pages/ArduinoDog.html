@@ -1,0 +1,165 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Stop looking thorugh my files!!</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    pls stop looking through my files k thanks
+    <script src="script.js"></script>s
+  </body>
+</html>
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Joanthan Liu | Creeper Puncher</title>
+    <link rel="stylesheet" href="../assets/style/page.css">
+    <link rel="stylesheet" href="../assets/style/slideAnim.css">
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/arduino.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/python.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
+  </head>
+  <body>
+    <div class="loadModal">
+      
+    </div>
+    <nav id="header">
+      <div class="headerDiv">
+        <div id="home" onclick="window.location.href = '../index.html'">
+          Jonathan Liu
+        </div>
+      </div>
+      <div class="headerDiv" id="redMotButton" onclick="toggleMot()">
+        error
+      </div>
+    </nav>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/cMuKp44WRo8?si=3kUoj1MrRuyRHy14" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    <img src="../assets/images/arduinodogwiring.png">
+    <pre><code>
+        import firebase_admin
+        import time
+        from firebase_admin import credentials
+        cred = credentials.Certificate("credent.json")
+        firebase_admin.initialize_app(cred, {
+            'databaseURL': "https://arduinodoglure-default-rtdb.firebaseio.com/"
+        })
+        from firebase_admin import db
+        from serial import Serial
+        called = False
+        toggle = "a"
+        arduino = Serial(port='COM3',   baudrate=9600, timeout=.1)
+        
+        """
+        if ser.isOpen():
+            while(True):
+                input_data=ser.readline().strip().decode("utf-8")
+                input_data = int(input_data)
+                
+        """
+        
+        
+        def listener(message):
+            global called
+            global toggle
+            if not called:
+                called = True
+                return
+            toggle += "a"
+            #print(toggle)
+            arduino.write(bytes(toggle,   'utf-8'))
+            time.sleep(0.05)
+            data = arduino.readline()
+            print(data)
+            #print(str(int(toggle)).encode())
+            #time.sleep(0.1)
+            #print(ser.readline())
+            #print(str(int(toggle)).encode())
+            #print(str(incri).encode())
+            #print(ser.readline().strip().decode("utf-8"))
+           
+        
+        my_stream = db.reference("main/event").listen(listener)        
+      </code></pre>
+      <pre><code>
+        const firebaseConfig = {
+            //nuh uh
+          };
+          
+            firebase.initializeApp(firebaseConfig);
+            const db = firebase.database();
+          
+          function sendEvent()
+          {
+              let newData = Date.now()
+              db.ref("main/event").set({
+                  newData
+                });
+          }
+           </code></pre>
+           <pre><code>
+            int oldS = 0;
+            int newS = 0;
+            String x;
+            void setup() {
+              
+            Serial.begin(9600);
+            Serial.setTimeout(1); 
+            }
+            
+            void alertDog()
+            {
+              Serial.print(x);
+             analogWrite(8, 255); // sets the digital pin 13 on
+              digitalWrite(7,HIGH);
+              delay(500);
+              analogWrite(8, 0); // sets the digital pin 13 on
+              digitalWrite(7,LOW);
+              Serial.print(x+"brh");
+            }
+            
+            void loop() 
+            {
+              while (!Serial.available()); 
+            
+                x = Serial.readString(); 
+                //Serial.print(x);
+              
+              alertDog();
+            }
+            
+            
+            /*
+            void setup()
+            {
+            
+            }
+            
+            void loop()
+            {
+            
+            }
+            
+            */
+            
+               </code></pre>
+              
+    <footer>
+      
+    </footer>
+    <script src="../assets/js/page.js"></script>
+  </body>
+</html>
