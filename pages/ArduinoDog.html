@@ -47,9 +47,29 @@
         error
       </div>
     </nav>
+   
     <div class="articleParallax" style="background-image:url('../assets/images/meandthedoggo.png'); height:80%;"><span class="artParText">Using Software To Mess With My Dog</span></div>
+    <article>
     <h1>Using Software to Annoy My Dog Remotely<br><span style="font-size:small">Jonathan Liu: 9/30/23</span></h1>
-    <p>As of writing this my dog, Lele(乐乐) is about eight months old and his number one talent is running around all day. I got him in the summer of 2023, and he was constantly dashing circles around our house. Instead of just spending a short fifteen minutes to teach recall, I opted to spend the day writing code in three languages.</p>
+    <p>As of writing this, my dog, Lele(乐乐), is about eight months old, and his number one talent is running around all day. I got him in the summer of 2023, and he was constantly dashing circles around our house. Instead of spending fifteen minutes teaching him recall, I spent the day writing code in three languages. I built this project on a <a href="https://spooketti.github.io/studentmodern//2023/09/05/DogLure.html" target="blank" rel="noopener noreferrer">website</a> I had for school and connected it to Google’s Firebase with the Firebase SDK and JavaScript. </p>
+    <pre><code>
+      const firebaseConfig = {
+          //nuh uh
+        };
+        
+          firebase.initializeApp(firebaseConfig);
+          const db = firebase.database();
+        
+        function sendEvent()
+        {
+            let newData = Date.now()
+            db.ref("main/event").set({
+                newData
+              });
+        }
+         </code></pre>
+         <pre><code>
+    <p>The firebaseConfig variable </p>
     <video><source src="../assets/images/arduinodog.mp4" type="video/mp4"></video>
     <img src="../assets/images/arduinodogwiring.png">
     <pre><code>
@@ -97,23 +117,7 @@
         
         my_stream = db.reference("main/event").listen(listener)        
       </code></pre>
-      <pre><code>
-        const firebaseConfig = {
-            //nuh uh
-          };
-          
-            firebase.initializeApp(firebaseConfig);
-            const db = firebase.database();
-          
-          function sendEvent()
-          {
-              let newData = Date.now()
-              db.ref("main/event").set({
-                  newData
-                });
-          }
-           </code></pre>
-           <pre><code>
+      
             int oldS = 0;
             int newS = 0;
             String x;
@@ -144,22 +148,8 @@
               alertDog();
             }
             
-            
-            /*
-            void setup()
-            {
-            
-            }
-            
-            void loop()
-            {
-            
-            }
-            
-            */
-            
                </code></pre>
-              
+              </article>
     <footer>
       
     </footer>

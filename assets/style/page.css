@@ -85,3 +85,18 @@ html,body
     color:white;
     background-color: rgba(0, 0, 0, 0.163);
 }
+
+a
+{
+    transition: text-shadow .5s;
+}
+
+a:hover{
+    text-shadow: 0 0 10px black;
+}
+
+article p
+{
+    margin-left: 5%;
+    margin-right: 5%;
+}
