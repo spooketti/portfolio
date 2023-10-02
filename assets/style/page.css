@@ -100,3 +100,12 @@ article p
     margin-left: 5%;
     margin-right: 5%;
 }
+
+footer
+{
+    height:10%;
+    width:100%;
+    border-top: 1px solid #434242;
+    display: flex;
+    align-items: center;
+}

@@ -52,9 +52,10 @@
     <article>
     <h1>Using Software to Annoy My Dog Remotely<br><span style="font-size:small">Jonathan Liu: 9/30/23</span></h1>
     <p>As of writing this, my dog, Lele(乐乐), is about eight months old, and his number one talent is running around all day. I got him in the summer of 2023, and he was constantly dashing circles around our house. Instead of spending fifteen minutes teaching him recall, I spent the day writing code in three languages. I built this project on a <a href="https://spooketti.github.io/studentmodern//2023/09/05/DogLure.html" target="blank" rel="noopener noreferrer">website</a> I had for school and connected it to Google’s Firebase with the Firebase SDK and JavaScript. </p>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/TVJLA9W9UPo?si=AGPwrD0X331M-kH6" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     <pre><code>
       const firebaseConfig = {
-          //nuh uh
+          //this will be different across projects
         };
         
           firebase.initializeApp(firebaseConfig);
@@ -68,32 +69,27 @@
               });
         }
          </code></pre>
-         <pre><code>
-    <p>The firebaseConfig variable </p>
-    <video><source src="../assets/images/arduinodog.mp4" type="video/mp4"></video>
-    <img src="../assets/images/arduinodogwiring.png">
+         
+    <p>The firebaseConfig variable is generated on the Firebase website and is essentially the data used to connect from the front end to the back end. <br>
+      The db variable gets the database service from Firebase, and the function references the entry named “entry” in the main folder of the database and sets its data to the time in milliseconds since January 1, 1970.
+      <br>
+      <br>
+      In the same folder is a Python script that will listen for the stream of updates happening in the database every time someone clicks the button on the front end. Once this script receives an update, it will communicate with the Arduino circuit via serial data. 
+    </p>
+    
     <pre><code>
         import firebase_admin
         import time
         from firebase_admin import credentials
         cred = credentials.Certificate("credent.json")
         firebase_admin.initialize_app(cred, {
-            'databaseURL': "https://arduinodoglure-default-rtdb.firebaseio.com/"
+            'databaseURL': #this will be different on varying projects, mine was "https://arduinodoglure-default-rtdb.firebaseio.com/"
         })
         from firebase_admin import db
         from serial import Serial
         called = False
         toggle = "a"
         arduino = Serial(port='COM3',   baudrate=9600, timeout=.1)
-        
-        """
-        if ser.isOpen():
-            while(True):
-                input_data=ser.readline().strip().decode("utf-8")
-                input_data = int(input_data)
-                
-        """
-        
         
         def listener(message):
             global called
@@ -102,21 +98,20 @@
                 called = True
                 return
             toggle += "a"
-            #print(toggle)
             arduino.write(bytes(toggle,   'utf-8'))
             time.sleep(0.05)
             data = arduino.readline()
             print(data)
-            #print(str(int(toggle)).encode())
-            #time.sleep(0.1)
-            #print(ser.readline())
-            #print(str(int(toggle)).encode())
-            #print(str(incri).encode())
-            #print(ser.readline().strip().decode("utf-8"))
-           
-        
         my_stream = db.reference("main/event").listen(listener)        
       </code></pre>
+      <p>The imported libraries revolve around logging into the database and authenticating with Firebase, time for delay, and communicating across the USB port with serial data. The my_stream variable listens for changes in the database and calls a function. The listener will then write to the Arduino in bytes. Finally, the Arduino connects to the computer via a USB port with this circuit.</p>
+      <img src="../assets/images/arduinodogwiring.png">
+      <p>
+        The blue wire connects the ground electricity to the negative terminal on the breadboard, which connects to the anode of each component. The green wire connects to the 8th digital pin on the circuit board, which connects to the cathode of the Piezo buzzer. The red wire connects to the LED light that will turn on to signify activation if the sound is insufficient.
+      </p>
+      <p>This final script, written in the Arduino library of C++ connects to the Python script using serial data, checks to see if serial data is available, and activates each component.  
+      </p>
+        <pre><code>
       
             int oldS = 0;
             int newS = 0;
@@ -130,10 +125,10 @@
             void alertDog()
             {
               Serial.print(x);
-             analogWrite(8, 255); // sets the digital pin 13 on
+             analogWrite(8, 255); 
               digitalWrite(7,HIGH);
               delay(500);
-              analogWrite(8, 0); // sets the digital pin 13 on
+              analogWrite(8, 0); 
               digitalWrite(7,LOW);
               Serial.print(x+"brh");
             }
@@ -149,9 +144,15 @@
             }
             
                </code></pre>
+               <p>
+                This project was fun because it allowed me to connect several concepts of back end, front end, and hardware and practice other programming languages. Although my dog may not have cared too much in the end, it was not so much the result that mattered to me but the process itself. 
+                <br>
+                <br>
+                -Jonathan Liu
+               </p>
               </article>
     <footer>
-      
+      Jonathan Liu - Remind me to make a unique design for the footer
     </footer>
     <script src="../assets/js/page.js"></script>
   </body>
