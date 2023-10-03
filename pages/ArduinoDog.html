@@ -48,12 +48,12 @@
       </div>
     </nav>
    
-    <div class="articleParallax" style="background-image:url('../assets/images/meandthedoggo.png'); height:80%;"><span class="artParText">Using Software To Mess With My Dog</span></div>
+    <div class="articleParallax" style="background-image:url('../assets/images/meandthedoggo.png'); height:80%;"><span class="artParText slideable" data-slideanim="slideOpacity">Using Software To Mess With My Dog</span></div>
     <article>
-    <h1>Using Software to Annoy My Dog Remotely<br><span style="font-size:small">Jonathan Liu: 9/30/23</span></h1>
+    <h1 data-slideanim="slideRight" class="slideable">Using Software to Annoy My Dog Remotely<br><span style="font-size:small">Jonathan Liu: 9/30/23</span></h1>
     <p>As of writing this, my dog, Lele(乐乐), is about eight months old, and his number one talent is running around all day. I got him in the summer of 2023, and he was constantly dashing circles around our house. Instead of spending fifteen minutes teaching him recall, I spent the day writing code in three languages. I built this project on a <a href="https://spooketti.github.io/studentmodern//2023/09/05/DogLure.html" target="blank" rel="noopener noreferrer">website</a> I had for school and connected it to Google’s Firebase with the Firebase SDK and JavaScript. </p>
     <iframe width="560" height="315" src="https://www.youtube.com/embed/TVJLA9W9UPo?si=AGPwrD0X331M-kH6" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-    <pre><code>
+    <pre class="slideable" data-slideanim="slideRight"><code>
       const firebaseConfig = {
           //this will be different across projects
         };
@@ -77,7 +77,7 @@
       In the same folder is a Python script that will listen for the stream of updates happening in the database every time someone clicks the button on the front end. Once this script receives an update, it will communicate with the Arduino circuit via serial data. 
     </p>
     
-    <pre><code>
+    <pre class="slideable" data-slideanim="slideLeft"><code>
         import firebase_admin
         import time
         from firebase_admin import credentials
@@ -111,7 +111,7 @@
       </p>
       <p>This final script, written in the Arduino library of C++ connects to the Python script using serial data, checks to see if serial data is available, and activates each component.  
       </p>
-        <pre><code>
+        <pre class="slideable" data-slideanim="slideRight"><code>
       
             int oldS = 0;
             int newS = 0;
