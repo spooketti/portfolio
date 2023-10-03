@@ -392,6 +392,7 @@ path
     overflow: hidden;
     text-overflow: ellipsis;
     font-family: 'Nanum Gothic', sans-serif;
+    box-shadow: 0 10px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 
@@ -423,6 +424,7 @@ path
     top:0%;
     width:33%;
     z-index: 10;
+    
     /*
     height:100%;
     width:100%;
