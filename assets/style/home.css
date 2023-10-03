@@ -293,6 +293,9 @@ html,body
     border: #1f1f1f 1px solid;
     overflow: hidden;
     pointer-events: all;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .ContactImage
