@@ -1,0 +1,195 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Stop looking thorugh my files!!</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    pls stop looking through my files k thanks
+    <script src="script.js"></script>s
+  </body>
+</html>
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Joanthan Liu | Iteration</title>
+    <link rel="stylesheet" href="../assets/style/page.css">
+    <link rel="stylesheet" href="../assets/style/slideAnim.css">
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/python.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
+  </head>
+  <body>
+    <div class="loadModal">
+      
+    </div>
+    <nav id="header">
+      <div class="headerDiv">
+        <div id="home" onclick="window.location.href = '../index.html'">
+          Jonathan Liu
+        </div>
+      </div>
+      <div class="headerDiv" id="redMotButton" onclick="toggleMot()">
+        error
+      </div>
+    </nav>
+   
+    <div class="articleParallax" style="background-image:url('../assets/images/recursion.png'); height:80%;"><span class="artParText slideable" data-slideanim="slideOpacity">Iterations, and their Applications</span></div>
+    <article>
+    <h1 data-slideanim="slideRight" class="slideable">Iterations, and their Appliances<br><span style="font-size:small">Gavin Dyke, Sri Surapaneni,Soham Kulkarni, Jonathan Liu: 10/5/23</span></h1>
+    <br>  
+    <h1 data-slideanim="slideLeft" class="slideable">CollegeBoard Materials</h1>
+    <p>Sri Code / Article</p>
+    <h1 data-slideanim="slideLeft" class="slideable">Iterations, Loops, and Loops, and Loops, and Loops, and</h1>
+    <p>
+      Gavin Code / Article
+    </p>
+    <h1 data-slideanim="slideRight" class="slideable">For Loops</h1>
+    <p>
+      In computer science, one of the fundamental concepts is looping and iteration. Using loops in code allows programmers to shorten a thousand lines of code into less than five lines. One of those loops is known as a “for loop” used to iterate through some sequence. Some examples would be a list, string, dictionary, etc. Using the if statement within a for loop is common practice, with this code block as an example. 
+    </p>
+    <pre data-slideanim="slideRight" class="slideable"><code>
+    for i in range(1,11):
+      if(i%2==0):
+        print(f"{i} is an even number!")
+      else:
+        print(f"{i} is an odd number!")
+    </code></pre>
+    <pre><code id="block1">
+
+    </code></pre>
+    <button class="runButton slideable" data-slideanim="slideRight" onclick="blockone()">▷ Run</button>
+    <p>
+      This Python program will iterate through the numbers 1 through 10 with variable “i” being the iterated index. The variable “i” takes on the value of 1, runs a script based on the value of 1, then iterates to 2, and repeats until it has reached its end condition. Every iteration, it will check to see if the variable “i” modulo 2 has no remainder, which is to say if it is even. Often, the software may be error-prone, with one of the solutions Python provides being “try” and “except” blocks.
+    </p>
+    <pre class="python slideable" data-slideanim="slideLeft"><code>
+      values = ["word",2, "no",62623]
+      for i in values:
+        try:
+          print(i+0)
+        except:
+          print("not a number")
+
+    </code></pre>
+    <pre><code id="block2"></code></pre>
+    <button class="runButton slideable" data-slideanim="slideRight" onclick="blocktwo()">▷ Run</button>
+    <p>This script will return an error upon trying to add a number to a string datatype, meaning that the script will iterate through the list of values of varying datatypes, try to print that array value with 0 added to it, and print that it’s not a number once it errors on non-number datatypes.
+    </p>
+    <p>
+      This last Python program will use a for loop to iterate through the values of the list of words, ignore any specified terms with a continue block, and stop the loop once it reaches a specific point.
+    </p>
+    <pre class="python slideable" data-slideanim="slideOpacity"><code>
+      wordBank = ["apple", "ignoreThis", "cherry","grapes","last","swearwords"]
+      for i in wordBank:
+        if i == "ignoreThis":
+          continue
+        if i == "last":
+          break
+        print(i)
+
+    </code></pre>
+    <pre><code id="block3"></code></pre>
+    <button class="runButton slideable" data-slideanim="slideRight" onclick="blockthree()">▷ Run</button>
+
+
+              </article>
+    <footer class="footing">
+      Jonathan Liu - Remind me to make a unique design for the footer
+    </footer>
+    <script src="../assets/js/page.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script>
+     const firebaseConfig = {
+  apiKey: "AIzaSyDrKv5V8dktmndh2rlvWOmDsnzfRGWoOsg",
+  authDomain: "iterationpresentation.firebaseapp.com",
+  projectId: "iterationpresentation",
+  storageBucket: "iterationpresentation.appspot.com",
+  messagingSenderId: "611500096086",
+  appId: "1:611500096086:web:1296565e21d4b9b27dd9f7",
+  measurementId: "G-GEL30Q2RSX"
+};
+const app = initializeApp(firebaseConfig);
+const db = firebase.database();
+    </script>
+    <script>
+     
+      function blockone()
+      {
+        document.getElementById("block1").innerText = ""
+        let output = ""
+        for(let i=1;i<=10;i++)
+        {
+          if(i%2==0)
+          {
+            output += `${i} is an even number! \n`
+          }
+          else
+          {
+            output += `${i} is an odd number! \n`
+          }
+        }
+        document.getElementById("block1").innerText = output
+      }
+
+      function blocktwo()
+      {
+          let output = ""
+          let values = ["word",2, "no",62623]
+          for(let i=0;i<values.length;i++)
+          {
+            if(typeof values[i] == "number")
+            {
+              output += `${values[i]} \n`
+            }
+            else
+            {
+              output += "not a number \n"
+            }
+          }
+          document.getElementById("block2").innerText = output
+      }
+
+      function blockthree()
+      {
+       /*  wordBank = ["apple", "ignoreThis", "cherry","grapes","last","swearwords"]
+      for i in wordBank:
+        if i == "ignoreThis":
+          continue
+        if i == "last":
+          break
+        print(i)*/ 
+        let output = ""
+        let wordBank = ["apple", "ignoreThis", "cherry","grapes","last","swearwords"]
+        for(let i=0;i<wordBank.length;i++)
+        {
+          if(wordBank[i] == "ignoreThis")
+          {
+            continue;
+          }
+          if(wordBank[i]=="last")
+          {
+            break;
+          }
+          output += `${wordBank[i]} \n`
+        }
+        document.getElementById("block3").innerText  = output
+      }
+    </script>
+    
+  </body>
+</html>
