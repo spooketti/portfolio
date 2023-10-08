@@ -103,7 +103,9 @@
     </code></pre>
     <pre><code id="block3"></code></pre>
     <button class="runButton slideable" data-slideanim="slideRight" onclick="blockthree()">▷ Run</button>
+    <div id="homeworkHolder">
 
+    </div>
 
               </article>
     <footer class="footing">
@@ -166,13 +168,7 @@ const db = firebase.database();
 
       function blockthree()
       {
-       /*  wordBank = ["apple", "ignoreThis", "cherry","grapes","last","swearwords"]
-      for i in wordBank:
-        if i == "ignoreThis":
-          continue
-        if i == "last":
-          break
-        print(i)*/ 
+
         let output = ""
         let wordBank = ["apple", "ignoreThis", "cherry","grapes","last","swearwords"]
         for(let i=0;i<wordBank.length;i++)
@@ -189,6 +185,74 @@ const db = firebase.database();
         }
         document.getElementById("block3").innerText  = output
       }
+
+      /*
+      My average resting heartrate: 72
+
+Day #1:
+Warm-up:
+4 minutes of jump rope
+1 minute of jogging a lap
+
+Workout:
+3 minutes curl ups
+6 minutes burpees
+4 minutes jump rope
+6 minutes push up
+1 minute failing to cartwheel
+5 minutes of curl ups
+10 minutes of walking my dog around the neighborhood
+Total: About 30 minutes and possibly 5 or more minutes of break
+Percieved Exerition: 3
+Heart rate: 114
+
+Day #2:
+Warm-up:
+3 minutes of stretching
+2 minutes of jumping jacks
+
+Workout:
+5 minutes of push ups
+6 minutes run to the sports park I live by
+2 minutes rest at the park
+2 minutes walk in a short circle
+10 minutes run on the track at the field
+2 minutes rest
+8 minutes jog up the hill from the park
+6 minutes of burpees
+Total: About 36 minutes time with 4 minutes rest in the 36
+Percieved Exerition: 3.5
+Heart rate: 121
+
+Day #3:
+Warm-up:
+5 minutes of burpees
+1 minute of stretching
+Workout:
+4 minutes of Burpees
+15 minute mile
+4 minutes of walking laps in backyard
+6 minutes of running laps in the backyard
+Total: About 35 minutes 
+Percieved Exerition: 3.3
+Heart Rate: 113
+
+Day #4:
+Warm-up:
+3 minutes running laps
+3 minutes running up and down the stairs
+
+Workout:
+5 minutes of Sit-ups
+18 Minutes of dog walking
+6 minutes of Running a lap around house
+5 minutes burpees
+5 minutes pushups
+Percieved Exerition: 3.2
+Heart Rate:113
+*/
+
+
     </script>
     
   </body>
