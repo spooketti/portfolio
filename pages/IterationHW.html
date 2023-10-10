@@ -47,17 +47,38 @@
       </div>
     </nav>
    
-    <div class="articleParallax" style="background-image:url('../assets/images/recursion.png'); height:80%;"><span class="artParText slideable" data-slideanim="slideOpacity">Iterations, and their Applications</span></div>
+    <div class="articleParallax" style="background-image:url('../assets/images/recursion.png'); height:80%;"><span class="artParText slideable" data-slideanim="slideOpacity" style="background-color: black;">Iterations, and their Applications</span></div>
     <article>
     <h1 data-slideanim="slideRight" class="slideable">Iterations, and their Appliances<br><span style="font-size:small">Gavin Dyke, Sri Surapaneni,Soham Kulkarni, Jonathan Liu: 10/5/23</span></h1>
     <br>  
-    <h1 data-slideanim="slideLeft" class="slideable">CollegeBoard Materials</h1>
-    <p>Sri Code / Article</p>
+    <h1 data-slideanim="slideLeft" class="slideable">CollegeBoard Materials<br><span style="font-size:small">Sri Surapaneni</span></h1>
+    <p>Iteration is a repeating portion of an algorithm. It repeats a specified number of times or when a condition succeeds.</p>
+    <img src="../assets/images/IterationExample.png" data-slideanim="slideOpacity" class="slideable">
+    <h3>Another Example</h3>
+    <ol>
+      <li>You are baking cookies and are heating them to be a golden brown</li>
+      <li>You heat the cookies for two minutes, take them out, check if they are the right color, and then put them back in</li>
+      <li>Repeat step 2 until they are golden brown</li>
+    </ol>
+    <h3><strong>What did you just simulate in coding?</strong></h3>
+    <p>You just demonstrated iteration! You repeated something until the condition succeeded!
+Now let’s look at some specific types of iteration.</p>
+    <img src="../assets/images/CBGoal.png">
+    <br>
+    <img src="../assets/images/CBGoal2.png">
+    <img src="../assets/images/CBOutput1.png">
+    <br>
+    <img src="../assets/images/CBGoal3.png">
+    <img src="../assets/images/CBOutput2.png">
+    <p><strong>Question:</strong>What will the product be when this is repreated 3 times?</p>
+    <img src="../assets/images/CBQuestion.png">
+    <button onclick="this.innerText='27'" class="runButton">Reveal Answer</button>
+
     <h1 data-slideanim="slideLeft" class="slideable">Iterations, Loops, and Loops, and Loops, and Loops, and</h1>
     <p>
       Gavin Code / Article
     </p>
-    <h1 data-slideanim="slideRight" class="slideable">For Loops</h1>
+    <h1 data-slideanim="slideRight" class="slideable">For Loops<br><span style="font-size:small">Jonathan Liu</span></h1>
     <p>
       In computer science, one of the fundamental concepts is looping and iteration. Using loops in code allows programmers to shorten a thousand lines of code into less than five lines. One of those loops is known as a “for loop” used to iterate through some sequence. Some examples would be a list, string, dictionary, etc. Using the if statement within a for loop is common practice, with this code block as an example. 
     </p>
@@ -132,7 +153,7 @@ const db = firebase.database();
      
       function blockone()
       {
-        document.getElementById("block1").innerText = ""
+        document.getElementById("block1").innerText = "Compiling..."
         let output = ""
         for(let i=1;i<=10;i++)
         {
@@ -145,11 +166,16 @@ const db = firebase.database();
             output += `${i} is an odd number! \n`
           }
         }
-        document.getElementById("block1").innerText = output
+        setTimeout(function()
+        {
+          document.getElementById("block1").innerText = output
+        },800)
+       
       }
 
       function blocktwo()
       {
+        document.getElementById("block2").innerText = "Compiling..."
           let output = ""
           let values = ["word",2, "no",62623]
           for(let i=0;i<values.length;i++)
@@ -163,12 +189,16 @@ const db = firebase.database();
               output += "not a number \n"
             }
           }
-          document.getElementById("block2").innerText = output
+          setTimeout(function()
+          {
+            document.getElementById("block2").innerText = output
+          },130)
+          
       }
 
       function blockthree()
       {
-
+        document.getElementById("block3").innerText = "Compiling..."
         let output = ""
         let wordBank = ["apple", "ignoreThis", "cherry","grapes","last","swearwords"]
         for(let i=0;i<wordBank.length;i++)
@@ -183,75 +213,14 @@ const db = firebase.database();
           }
           output += `${wordBank[i]} \n`
         }
-        document.getElementById("block3").innerText  = output
+        setTimeout(function()
+        {
+          document.getElementById("block3").innerText  = output
+        },250)
+        
       }
 
-      /*
-      My average resting heartrate: 72
-
-Day #1:
-Warm-up:
-4 minutes of jump rope
-1 minute of jogging a lap
-
-Workout:
-3 minutes curl ups
-6 minutes burpees
-4 minutes jump rope
-6 minutes push up
-1 minute failing to cartwheel
-5 minutes of curl ups
-10 minutes of walking my dog around the neighborhood
-Total: About 30 minutes and possibly 5 or more minutes of break
-Percieved Exerition: 3
-Heart rate: 114
-
-Day #2:
-Warm-up:
-3 minutes of stretching
-2 minutes of jumping jacks
-
-Workout:
-5 minutes of push ups
-6 minutes run to the sports park I live by
-2 minutes rest at the park
-2 minutes walk in a short circle
-10 minutes run on the track at the field
-2 minutes rest
-8 minutes jog up the hill from the park
-6 minutes of burpees
-Total: About 36 minutes time with 4 minutes rest in the 36
-Percieved Exerition: 3.5
-Heart rate: 121
-
-Day #3:
-Warm-up:
-5 minutes of burpees
-1 minute of stretching
-Workout:
-4 minutes of Burpees
-15 minute mile
-4 minutes of walking laps in backyard
-6 minutes of running laps in the backyard
-Total: About 35 minutes 
-Percieved Exerition: 3.3
-Heart Rate: 113
-
-Day #4:
-Warm-up:
-3 minutes running laps
-3 minutes running up and down the stairs
-
-Workout:
-5 minutes of Sit-ups
-18 Minutes of dog walking
-6 minutes of Running a lap around house
-5 minutes burpees
-5 minutes pushups
-Percieved Exerition: 3.2
-Heart Rate:113
-*/
-
+      
 
     </script>
     
