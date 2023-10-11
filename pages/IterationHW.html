@@ -64,10 +64,11 @@
     <p>You just demonstrated iteration! You repeated something until the condition succeeded!
 Now let’s look at some specific types of iteration.</p>
     <img src="../assets/images/CBGoal.png">
-    <br>
+    <p>This is an example of repeating an <i style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">n</i> amount of times</p>
     <img src="../assets/images/CBGoal2.png">
     <img src="../assets/images/CBOutput1.png">
     <br>
+    <p>This is an example of <i style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">repeat until</i></p>
     <img src="../assets/images/CBGoal3.png">
     <img src="../assets/images/CBOutput2.png">
     <p><strong>Question:</strong>What will the product be when this is repreated 3 times?</p>
@@ -125,7 +126,25 @@ Now let’s look at some specific types of iteration.</p>
     <pre><code id="block3"></code></pre>
     <button class="runButton slideable" data-slideanim="slideRight" onclick="blockthree()">▷ Run</button>
     <h1 class="slideable" data-slideanim="slideLeft">Recursive Thinking<br><span style="font-size:small">Soham Kulkarni</span></h1>
-    <p>Soham Article</p>
+    <p>A recursive function uses itself for a condition. It also has a terminating statement which is a definitive output for one statement.</p>
+    <img src="../assets/images/sohamRecurse.png">
+    <pre><code>
+      def fibonacci(x):
+        if x==1:
+          return(0) # First terminating statement
+        if x == 2:
+          return(1) # Second terminating statement
+   
+        else:
+          return(fibonacci(x-1)+ fibonacci(x-2))
+
+
+      for i in range(8):    
+        print(fibonacci(i+1))
+
+    </code></pre>
+    <pre><code id="sohamBlock"></code></pre>
+    <button class="runButton slideable" data-slideanim="slideLeft" onclick="sohamBlock()">▷ Run</button>
     <div id="homeworkHolder">
 
     </div>
@@ -219,7 +238,34 @@ const db = firebase.database();
         {
           document.getElementById("block3").innerText  = output
         },250)
-        
+      }
+        function sohamBlock()
+      {
+        let output = ""
+        document.getElementById("sohamBlock").innerText = "Compiling..."
+        function fibonacci(x)
+        {
+          if(x==1)
+          {
+            return 0;
+          }
+          if(x==2)
+          {
+            return 1;
+          }
+          else
+          {
+            return fibonacci(x-1)+fibonacci(x-2)
+          }
+        }
+        for(let i=0;i<8;i++)
+        {
+          output += `${fibonacci(i+1)}\n`
+        }
+        setTimeout(function()
+        {
+          document.getElementById("sohamBlock").innerText  = output
+        },412)
       }
 
       
