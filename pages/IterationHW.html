@@ -77,10 +77,7 @@ Now let’s look at some specific types of iteration.</p>
     <button onclick="this.innerText='27'" class="runButton">Reveal Answer</button>
     <p class="slideable" data-slideanim="slideRight">From these examples, you can see that loops are a big part of iteration. These loop examples were in pseudocode, and there are many common loops involving iteration in python, which will be covered by the following people</p>
 
-    <h1 data-slideanim="slideLeft" class="slideable">Iterations, Loops, and Loops, and Loops, and Loops, and</h1>
-    <p>
-      Gavin Code / Article
-    </p>
+   
     <h1 data-slideanim="slideRight" class="slideable">For Loops<br><span style="font-size:small">Jonathan Liu</span></h1>
     <p>
       In computer science, one of the fundamental concepts is looping and iteration. Using loops in code allows programmers to shorten a thousand lines of code into less than five lines. One of those loops is known as a “for loop” used to iterate through some sequence. Some examples would be a list, string, dictionary, etc. Using the if statement within a for loop is common practice, with this code block as an example. 
@@ -127,6 +124,382 @@ Now let’s look at some specific types of iteration.</p>
     </code></pre>
     <pre><code id="block3"></code></pre>
     <button class="runButton slideable" data-slideanim="slideRight" onclick="blockthree()">▷ Run</button>
+    <h1 data-slideanim="slideLeft" class="slideable">Iterations, Loops, and Loops, and Loops, and Loops, and</h1>
+    <p>
+      Loops, iterate through a set version of the code, as the previous text has pointed out, here’s a simple code iterating through a list
+    </p>
+    <pre><code>
+      import time
+      text = ["H", "e", "l", "l", "o", "W", "o", "r", "l", "d", "!"]
+      toPrint = ""
+      for x in range(0, len(text)):
+          toPrint += text[x]
+          print(toPrint, end="\r")
+          time.sleep(0.4)
+      </code></pre>
+      <p>This code takes text, and through each element, appends them to “toPrint” and prints them out, to create the output:</p>
+      <pre><code>
+H
+He
+Hel
+Hell
+Hello
+HelloW
+HelloWo
+HelloWor
+HelloWorl
+HelloWorld
+
+      </code></pre>
+      <p>Another way we can loop through objects is through recursion, where we have a definition to loop through an object:
+        Here’s an example of horse races that uses recursion:
+        </p>
+        <pre><code>
+import random, time
+newLine = " "*300
+horses = [0, 0, 0, 0, 0]
+board = [
+    ["@", " ", " ", " ", " ", " "],
+    ["@", " ", " ", " ", " ", " "],
+    ["@", " ", " ", " ", " ", " "],
+    ["@", " ", " ", " ", " ", " "],
+    ["@", " ", " ", " ", " ", " "],
+    ["@", " ", " ", " ", " ", " "]
+]
+win = False
+currentHorse = 0
+winners = []
+frameCt = 0
+
+# I use excessive amounts of space because \n can't be replaced but 300 spaces can be
+def game():
+    global frameCt, display, board, currentHorse, winners, horses, newLine, win
+    frameCt += 1
+    display = ""
+    
+    for x in range(0, len(horses)):
+        currentHorse = random.randint(0, 1)
+        if 5 > int(currentHorse + horses[x]):
+            board[x][horses[x]] = " "
+            horses[x] = currentHorse + horses[x]
+            # print(currentHorse + horses[x])
+            board[x][horses[x]] = "@"
+        else:
+            win = True
+            winners.append("Horse " + str(x))
+            board[x][horses[x]] = " "
+            horses[x] = 5
+            board[x][horses[x]] = "@"
+        display += "Horse " + str(x) + ": " + str(board[x]) + newLine
+        print(display, end = "\r")
+        
+    time.sleep(0.8)
+    if win == False:
+        game()
+game()
+print("\n" + "-"*30)
+print(winners)
+
+        </code></pre>
+        <p>
+          What happens here is that every horse has both an array for their position and the board for where they are. The horses either by 1 or 0 each time using random.randInt(0, 1) and then reports that to the board. If the horses progress by more than 5, they are reset back to 5.   
+        </p>
+        <p>
+          Now that we're comfortable with lists, let's work on multiple cases. Lists work well for a single variable, but what if you want to have multiple lines, meet the dictionary.
+        </p>
+        <pre><code>
+          dict = {
+            “a” : “1”, 
+            “b” : “2”, 
+            “c” : “3”
+            }            
+        </code></pre>
+        <p>This allows for multiple parameters to be used in a list, here’s one for the sin wave:
+        </p>
+        <pre><code>
+import math
+height = 10
+length = 50
+    
+screen = ""
+currentLine = 2
+newLine = " "*300
+tableData = []
+displayTable = "x | y" + newLine
+lines = {
+    "0":{
+        "char" : "b",
+        "table" : True,
+        "scale" : 3
+        
+    },
+    "1":{
+        "char" : "*",
+        "table" : False,
+        "scale" : 1
+        
+    },
+    "2":{
+        "char" : "O",
+        "table" : True,
+        "scale" : 2
+    }
+}
+scale = lines[str(currentLine)]["scale"]
+
+def mathSin(count):
+    global scale
+    return math.floor((math.sin(count)) * scale)
+
+for y in range(0, height):
+    for x in range(0, length):
+        if y == mathSin(x) + math.floor(height/2):
+            screen += str(lines[str(currentLine)]["char"])
+            tableData += [[x, mathSin(x) + math.floor(height/2)]]
+        elif y == math.floor(height/2):
+            screen += "!"
+        else:
+            screen += "."
+    screen += newLine
+print("Result for y = mathSin(" + str(scale) + "x): \n" + screen)
+tableData.sort(key = lambda a: a[0])
+
+if lines[str(currentLine)]["table"] == True:
+    print("\nTable Data says:")
+    for c in range(0, len(tableData)):
+        print(str(tableData[c][0]) + " | " + str(tableData[c][1]))
+
+        </code></pre>
+        <p>
+          This code allows for sin to be called using mathSin(), to call for a sine wave for the x-axis. This though is out of order because the screen works left to right, then down. So we have to use .sort to rearrange the data to the x-axis <br>
+          Popcorn Hack;
+	See if you can make a new variable mathCos and add that as a new variable
+
+        </p>
+        <h1>Homework</h1>
+        <p>
+          Use a recursion to output aspects of your life <span style="font-size:small">hint: think arrays/lists</span>
+        </p>
+        <h1>Bonus Challenge</h1>
+        <p>Based on What you have learned of Recursive Functions, it shouldn’t be too hard to create something like this:</p>
+        <pre><code>
+          # Here's our player as he tries to embark on the land of the wanderers
+
+import time
+
+currentMove = 0
+player = {
+    "item":"x",
+    "x":5,
+    "y":5
+}
+wall = {
+    "vertInfo":{
+        "0":{
+            "item":"#",
+            "x":6,
+            "y":6
+        },
+        "1":{
+            "item":"#",
+            "x":7,
+            "y":6,
+        },
+        "2":{
+            "item":"#",
+            "x":9,
+            "y":6,
+        },
+        "3":{
+            "item":"#",
+            "x":10,
+            "y":6,
+        },
+        "4":{
+            "item":"#",
+            "x":10,
+            "y":5,
+        },
+        "5":{
+            "item":"#",
+            "x":10,
+            "y":4,
+        },
+        "6":{
+            "item":"#",
+            "x":10,
+            "y":3,
+        },
+        "7":{
+            "item":"#",
+            "x":10,
+            "y":2,
+        },
+        "8":{
+            "item":"#",
+            "x":9,
+            "y":2,
+        },
+        "9":{
+            "item":"#",
+            "x":8,
+            "y":2,
+        },
+        "10":{
+            "item":"#",
+            "x":7,
+            "y":2,
+        },
+        "11":{
+            "item":"#",
+            "x":6,
+            "y":2,
+        },
+        "12":{
+            "item":"#",
+            "x":6,
+            "y":3
+        },
+        "13":{
+            "item":"#",
+            "x":6,
+            "y":4
+        },
+        "14":{
+            "item":"#",
+            "x":6,
+            "y":5
+        }
+    }
+}
+animal = {
+    "item":"@",
+    "x" : 10,
+    "y" : 10
+}
+
+theObjs = [wall, player, animal]
+lane = ""
+width = 20
+height = 20
+thePixel = ""
+rec = []
+
+def animalMoves():
+    pass
+    # Your code for the animal goes in function
+    # Animal is the thing your controlling 
+    # Can use:
+        # Walk (Parameters):
+            # Can take W, A, S, or D
+            # Object being controlled
+        # random.randInt()
+        # and More
+    # Delete this when coding
+        
+    return screen()
+
+def startUp():
+    global display
+    display = [["."]*20]*20
+    movements()
+
+def decompileVerts():
+    objects = []
+    for x in range(0, len(theObjs)):
+        if('vertInfo' in theObjs[x]):
+            for b in range(0, len(theObjs[x]["vertInfo"])):
+                if(theObjs[x]["vertInfo"][str(b)]["x"] > 0 and 20 > theObjs[x]["vertInfo"][str(b)]["x"] and theObjs[x]["vertInfo"][str(b)]["y"] > 0):
+                    objects.append(theObjs[x]["vertInfo"][str(b)])
+        else:
+            objects.append(theObjs[x])
+    return objects
+    
+def screen():
+    global display, width, height, loadObjCt, thePixel
+    theObjs = decompileVerts()
+    thePixel = ""
+    theObjs.sort(key = lambda a: a["y"] * width + a["x"])
+    loadObjCt = 0
+    for y in range(0, height, 1):
+        if(y < 10):
+            thePixel += "0"
+        thePixel += str(y)
+        display[y] = []
+        for x in range(0, width, 1):
+            if theObjs[loadObjCt]["x"] == x and theObjs[loadObjCt]["y"] == y:
+                display[y].append([theObjs[loadObjCt]["item"]])
+                if(loadObjCt + 1 < len(theObjs)):
+                    loadObjCt += 1
+            else:
+                display[y].append(["."])
+            thePixel += str(display[y][x][0])
+        thePixel += " "*300
+        display[y] = display[y]
+    return thePixel
+    
+def walk(moves, currentObj):
+    global display, rec
+    theRec = ""
+    if(moves == "w" and (display[currentObj["y"] - 1][currentObj["x"]] == ["."])):
+        currentObj["y"] -= 1
+        theRec = "w"
+    elif(moves == "a" and display[currentObj["y"]][currentObj["x"] - 1] == ["."]):  
+        currentObj["x"] -= 1
+        theRec = "a"
+    elif(moves == "d" and (display[currentObj["y"] + 1][currentObj["x"]] == ["."])):
+        currentObj["x"] += 1
+        theRec = "d"
+    elif(moves == "s" and (display[currentObj["y"]][currentObj["x"] + 1] == ["."])):
+        currentObj["y"] += 1
+        theRec = "s"
+        
+    return screen()
+
+def movements():
+    global rec, thePixel
+    moves = [
+        "a",
+        "a",
+        "s",
+        "s",
+        "s",
+        "d",
+        "d",
+        "d",
+        "w",
+        "w",
+        "a",
+    ]
+    newLine = " "*300
+    movesRec = ""
+    for x in range(0, len(moves) - 0):
+        walk(moves[x], player)
+        view = animalMoves()
+        print(view, end = "\r")
+        movesRec += moves[x] + ", "
+            
+        if(moves[x - 1] == moves[x]):
+            time.sleep(.4)
+        else:
+            time.sleep(.6)
+    print("\n--------------------" + "\n" + "Moves were: " + str(movesRec))
+
+
+startUp()
+
+        </code></pre>
+        <p>
+          <pre>
+	At line 105, there’s a function called “animalMoves”. This function should contain all the code for the animal “@”.
+	Objective; to have a non predetermined path for the animal to move.
+ fundamentally change the way the code is being ran.
+	Ideas for such include:
+Creating a functional animal bot system, where the animal runs towards or against an element
+Create a dialogue system, so when the player runs into “@”, they can talk to it
+Different rooms
+</pre>
+        </p>
     <h1 class="slideable" data-slideanim="slideLeft">Recursive Thinking<br><span style="font-size:small">Soham Kulkarni</span></h1>
     <p>A recursive function uses itself for a condition. It also has a terminating statement which is a definitive output for one statement.</p>
     <p>
