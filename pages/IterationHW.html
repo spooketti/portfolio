@@ -551,44 +551,12 @@ Example Output: 13
     </code></pre>
     <pre><code id="sohamBlock"></code></pre>
     <button class="runButton slideable" data-slideanim="slideLeft" onclick="sohamBlock()">▷ Run</button>
-    <!--
-    <h1>Submit HW</h1>
-    <pre><code contenteditable="true" id="submitBox">#Please submit this with your name as a comment!</code></pre>
-    <button class="runButton" onclick="codeSubmitter()">Submit Code</button>
-    -->
-    <div id="homeworkHolder">
-    
-    </div>
 
               </article>
     <footer class="footing">
     
     </footer>
     <script src="../assets/js/page.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-database.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
-    <script>
-     const firebaseConfig = {
-  apiKey: "AIzaSyDrKv5V8dktmndh2rlvWOmDsnzfRGWoOsg",
-  authDomain: "iterationpresentation.firebaseapp.com",
-  projectId: "iterationpresentation",
-  storageBucket: "iterationpresentation.appspot.com",
-  messagingSenderId: "611500096086",
-  appId: "1:611500096086:web:1296565e21d4b9b27dd9f7",
-  measurementId: "G-GEL30Q2RSX"
-};
-const app = initializeApp(firebaseConfig);
-const db = firebase.database();
-
-function codeSubmitter()
-{
-  let submission = document.getElementById("submitBox").innerText
-  db.ref("submits/" + Date.now()).set({
-
-  })
-}
-    </script>
     <script>
      function tFade1()
      {
