@@ -551,13 +551,18 @@ Example Output: 13
     </code></pre>
     <pre><code id="sohamBlock"></code></pre>
     <button class="runButton slideable" data-slideanim="slideLeft" onclick="sohamBlock()">▷ Run</button>
+    <!--
+    <h1>Submit HW</h1>
+    <pre><code contenteditable="true" id="submitBox">#Please submit this with your name as a comment!</code></pre>
+    <button class="runButton" onclick="codeSubmitter()">Submit Code</button>
+    -->
     <div id="homeworkHolder">
-
+    
     </div>
 
               </article>
     <footer class="footing">
-      Jonathan Liu - Remind me to make a unique design for the footer
+    
     </footer>
     <script src="../assets/js/page.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
@@ -575,6 +580,14 @@ Example Output: 13
 };
 const app = initializeApp(firebaseConfig);
 const db = firebase.database();
+
+function codeSubmitter()
+{
+  let submission = document.getElementById("submitBox").innerText
+  db.ref("submits/" + Date.now()).set({
+
+  })
+}
     </script>
     <script>
      function tFade1()
