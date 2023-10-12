@@ -61,7 +61,8 @@
       <li>Repeat step 2 until they are golden brown</li>
     </ol>
     <h3><strong>What did you just simulate in coding?</strong></h3>
-    <p>You just demonstrated iteration! You repeated something until the condition succeeded!
+    <button class="runButton slideable" data-slideanim="slideRight" onclick="tFade1()">Reveal Answer</button>
+    <p id="tfade1" style="opacity:0;transition: all 1s">You just demonstrated iteration! You repeated something until the condition succeeded!
 Now let’s look at some specific types of iteration.</p>
     <img src="../assets/images/CBGoal.png">
     <p>This is an example of repeating an <i style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">n</i> amount of times</p>
@@ -74,6 +75,7 @@ Now let’s look at some specific types of iteration.</p>
     <p><strong>Question:</strong>What will the product be when this is repreated 3 times?</p>
     <img src="../assets/images/CBQuestion.png">
     <button onclick="this.innerText='27'" class="runButton">Reveal Answer</button>
+    <p class="slideable" data-slideanim="slideRight">From these examples, you can see that loops are a big part of iteration. These loop examples were in pseudocode, and there are many common loops involving iteration in python, which will be covered by the following people</p>
 
     <h1 data-slideanim="slideLeft" class="slideable">Iterations, Loops, and Loops, and Loops, and Loops, and</h1>
     <p>
@@ -127,7 +129,36 @@ Now let’s look at some specific types of iteration.</p>
     <button class="runButton slideable" data-slideanim="slideRight" onclick="blockthree()">▷ Run</button>
     <h1 class="slideable" data-slideanim="slideLeft">Recursive Thinking<br><span style="font-size:small">Soham Kulkarni</span></h1>
     <p>A recursive function uses itself for a condition. It also has a terminating statement which is a definitive output for one statement.</p>
+    <p>
+      Recursion is the process of defining a problem in terms of itself.<br>
+      
+      Ex. You are yourself<br>
+      
+      A recursive function uses itself for a condition. It also has a terminating statement which is a definitive output for one statement.<br>
+      
+      Example of Recursion in Math:<br>
+      </p>
     <img src="../assets/images/sohamRecurse.png">
+    <p>
+      Problem: Calculate the factorial of a number using recursion.<br>
+Write a recursive function in Python to calculate the factorial of a non-negative integer <span style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">n</span>. The factorial of a non-negative integer <span style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">n</span> is the product of all positive integers less than or equal to <span style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">n</span>.
+<br>
+Solution:
+<br>
+    </p>
+    <pre><code>
+      def factorial(n):
+        if n == 0:
+          return 1
+        else:
+          return n * factorial(n - 1)
+      result = factorial(5)
+      print("The factorial of 5 is:", result)</code></pre>
+      <p>
+        Problem: Write a program that displavs the nth number of the fibonacci series<br>
+Example Input: 8<br>
+Example Output: 13
+      </p>
     <pre><code>
       def fibonacci(x):
         if x==1:
@@ -171,7 +202,11 @@ const app = initializeApp(firebaseConfig);
 const db = firebase.database();
     </script>
     <script>
-     
+     function tFade1()
+     {
+
+      document.getElementById("tfade1").style.opacity = 1
+     }
       function blockone()
       {
         document.getElementById("block1").innerText = "Compiling..."

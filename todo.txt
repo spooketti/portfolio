@@ -1,0 +1,7 @@
+make 404 run regardless of position: make the whole thing run without external scripts / css
+write about crescent
+write more articles
+add more content
+make 404 have a randomized lele photo
+make 404 have a midi editor
+write about robotics
