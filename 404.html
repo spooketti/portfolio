@@ -5,11 +5,30 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>404 | Jonathan Liu</title>
     <link rel="stylesheet" href="./assets/style/page.css">
+    <link rel="stylesheet" href="./assets/style/404.css">
     <!--<link rel="stylesheet" href="../assets/style/slideAnim.css">-->
     <link rel="icon" type="image/x-icon" href="./assets/images/favicon.ico">
   </head>
   <body>
-    pls stop looking through my files k thanks
+    <nav id="header">
+        <div class="headerDiv">
+          <div id="home" onclick="window.location.href = '../index.html'">
+            Jonathan Liu
+          </div>
+        </div>
+        <div class="headerDiv" id="redMotButton" onclick="toggleMot()">
+          error
+        </div>
+      </nav>
+      <div id="BG"></div>
+    <div id="FOFWrapper">
+        <h1>404</h1>
+        <br>
+        <h3>Woops, my dog Lele has hacked the web page: go back to a non demolished one on this <a href="./index.html">site</a></h3>
+        <img src="./assets/images/dogsit.jpg" id="smoldog">
+    </div>
+    
     <script src="./assets/js/404.js"></script>
+    <script src="./assets/js/page.js"></script>
   </body>
 </html>
