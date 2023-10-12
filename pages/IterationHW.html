@@ -154,6 +154,8 @@ Solution:
           return n * factorial(n - 1)
       result = factorial(5)
       print("The factorial of 5 is:", result)</code></pre>
+      <button class="runButton slideable" data-slideanim="slideRight" onclick="sohamBlock11()">▷ Run</button>
+      <pre><code id="sohamBlock-1"></code></pre>
       <p>
         Problem: Write a program that displavs the nth number of the fibonacci series<br>
 Example Input: 8<br>
@@ -250,6 +252,29 @@ const db = firebase.database();
             document.getElementById("block2").innerText = output
           },130)
           
+      }
+
+      function sohamBlock11()
+      {
+        let output = ""
+        document.getElementById("sohamBlock-1").innerText = "Compiling..."
+        function factorial(x)
+        {
+          if(x==0)
+          {
+            return 1;
+          }
+          else
+          {
+            return x * factorial(x-1)
+          }
+        }
+        let result = factorial(5)
+        output = `The factorial of 5 is: ${result}`
+        setTimeout(function()
+        {
+          document.getElementById("sohamBlock-1").innerText  = output
+        },210)
       }
 
       function blockthree()
