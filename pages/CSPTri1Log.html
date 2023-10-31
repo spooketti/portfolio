@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Joanthan Liu | Phoenix Reflection</title>
+    <link rel="stylesheet" href="../assets/style/page.css">
+    <link rel="stylesheet" href="../assets/style/slideAnim.css">
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
+  </head>
+  <body>
+    <div class="loadModal">
+      
+    </div>
+    <nav id="header">
+      <div class="headerDiv">
+        <div id="home" onclick="window.location.href = '../index.html'">
+          Jonathan Liu
+        </div>
+      </div>
+      <div class="headerDiv" id="redMotButton" onclick="toggleMot()">
+        error
+      </div>
+    </nav>
+   
+    <div class="articleParallax" style="background-image:url('../assets/images/tri1reflect.png'); height:80%;"><span class="artParText slideable" style="background-color:rgba(0, 0, 0, 0.475);" data-slideanim="slideOpacity">What Work I did for Phoenix</span></div>
+    <article>
+   <h1>The Concept<br><span style="font-size:small">10/31/2023 Jonathan Liu</span></h1>
+   <p>Nearing the end of the first trimester of this year, our final project was to create a project that utilizes a front end and back end. I figured one of the easiest ways to utilize a front end and back end would be to create a social media platform that was similar to the likes of Twitter. This is evident in the name of our project, Phoenix as the Phoenix is a bird; however, a Phoenix is a bird with fire, which is where the second part of the name comes from, Mars. I visualize Mars as a fire sand planet, and so the goal was to create social media with a theme revolving around space.</p>
+  <h1>The Work</h1>
+  <h3>Detecting URLs</h3>
+  <img src="../assets/images/PhoenixSect1.png">
+  <p>The main point of these other than just making the structure of the base website layout, was namely making posts more interactive.
+      It was my intent while making this project for text styling to be possible, with syntax highlighting, embedded images, and links. 
+      This is done with a regex, or regular expression to split the message into sections and to run specific checks on chunks of text to detect links, code, etc.
+      The main thing that we will use to link our project to space will be the NASA API's such as APOD and EPIC.
+  </p>
+  <h1>Firebase Work / Backend</h1>
+  <img src="../assets/images/PhoenixSect2.png">
+  <p>What brings our work to life would be the backend of our website, or the storage. Due to the unfortunate nature of our Amazon Web Services account, we could only really use EC2 for backend purposes and we were locked out of DyanmoDB. I was the main lead on designing the layout and posting system of the project, and worked on the Firebase backend. The project uses the Realtime Database service.</p>
+  <img src="../assets/images/PhoenixSect3.png">
+  <p>Each database entry is linked to a timestamp of how many milliseconds that have passed since January 1st 1970, and each entry takes in the values of the message content, it's likes, and it's username value.</p>
+  <p>The project uses Firebase Authentication with support for Google, Email and Password, and Anonymous coming soon.</p>
+  <p>As of the writing of this our project is still being actively developed, and we're interested in seeing where this project will go.</p>
+  </article>
+    <footer class="footing">
+      Jonathan Liu - Remind me to make a unique design for the footer
+    </footer>
+    <script src="../assets/js/page.js"></script>
+  </body>
+</html>
