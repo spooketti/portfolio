@@ -29,11 +29,11 @@
       </div>
     </nav>
    
-    <div class="articleParallax" style="background-image:url('../assets/images/tri1reflect.png'); height:80%;"><span class="artParText slideable" style="background-color:rgba(0, 0, 0, 0.475);" data-slideanim="slideOpacity">What Work I did for Phoenix</span></div>
+    <div class="articleParallax" style="background-image:url('../assets/images/blogpage.png'); height:80%;"><span class="artParText slideable" style="background-color:rgba(0, 0, 0, 0.475);" data-slideanim="slideOpacity">Trimester 1 of AP Computer Science Principles</span></div>
     <article>
-   <h1>The Concept<br><span style="font-size:small">10/31/2023 Jonathan Liu</span></h1>
+   <h1>The Reflection<br><span style="font-size:small">10/31/2023 Jonathan Liu</span></h1>
    <p>Nearing the end of the first trimester of this year, our final project was to create a project that utilizes a front end and back end. I figured one of the easiest ways to utilize a front end and back end would be to create a social media platform that was similar to the likes of Twitter. This is evident in the name of our project, Phoenix as the Phoenix is a bird; however, a Phoenix is a bird with fire, which is where the second part of the name comes from, Mars. I visualize Mars as a fire sand planet, and so the goal was to create social media with a theme revolving around space.</p>
-  <h1>The Work</h1>
+  <h1>Key Commits</h1>
   <h3>Detecting URLs</h3>
   <img src="../assets/images/PhoenixSect1.png">
   <p>The main point of these other than just making the structure of the base website layout, was namely making posts more interactive.
@@ -48,6 +48,438 @@
   <p>Each database entry is linked to a timestamp of how many milliseconds that have passed since January 1st 1970, and each entry takes in the values of the message content, it's likes, and it's username value.</p>
   <p>The project uses Firebase Authentication with support for Google, Email and Password, and Anonymous coming soon.</p>
   <p>As of the writing of this our project is still being actively developed, and we're interested in seeing where this project will go.</p>
+
+  <h1>Psuedocode</h1>
+  <img src="../assets/images/CBGoal2.png">
+  <p>A simple psuedocode script that shows iteration, variables, and console output</p>
+  <img src="../assets/images/CBGoal3.png">
+  <p>This psuedocode script takes variables x and y, repeats until x is more than y, and then displays the values</p>
+
+
+  <h1>Collegeboard Reflection</h1>
+  <p>I got a 54/66 on the practice test</p>
+  <img src="../assets/images/2018practiceapcsp.png" style="width:100%">
+  <p>In the test some concepts I hadn't previously known beforehand were on</p>
+  <ul>
+    <li>Question 3: Citizen Science</li>
+    <li>Question 6: Internet Engineering Task Force</li>
+    <li>Question 9: Iterative Process</li>
+    <li>Question 23: Redundant Routing</li>
+    <li>Question 46: Undecidable Problem</li>
+    <li>Question 51: Symmetric Encryption</li>
+  </ul>
+  <p>Test Corrections:</p>
+  <ul>
+    <li>Question 13: D as average character length went down</li>
+    <li>Question 16: D I misread the question as it is least likely</li>
+    <li>Question 23: B as the amount of paths is the smallest</li>
+    <li>Question 32: A I misread the question</li>
+    <li>Question 39: A </li>
+    <li>Question 42: D Math error</li>
+    <li>Quesiton 43: A: n<sup>2</sup>is reasonable</li>
+    <li>Question 44: B: 17 will overflow a 4 bit </li>
+    <li>Question 47: D: Private key for a  public system</li>
+    <li>Question 56: D: Error with starting index</li>
+    <li>Question 58: A: Misread</li>
+    <li>Question 59: B: Misread</li>
+  </ul>
+
+  <h1>Trimester 1 Reflection</h1>
+  <p>This trimester I had a lot of fun meeting people in my class and working on simple projects. I had worked with
+    <br>The jekyll pages format for the first time, which proved interesting for me, although I still prefer the standard html,js,css format
+    <br>I had a stronger connection with Linux from this class that I don't think I would have obtained without this class.
+    <br>For the future I intend to learn more programming languages and different branches of computer science.
+  </p>
+
+  <h1>Various scripts from the project</h1>
+  <p>login.js</p>
+  <pre><code class="language-js">
+  
+    let emailPrompt = document.getElementById("UsernamePrompt")
+    let pwPrompt = document.getElementById("PasswordPrompt")
+    const provide = new firebase.auth.GoogleAuthProvider();
+    function signInWithGoogle() 
+      {
+        firebase.auth()
+        .signInWithPopup(provide)
+        .then((result) => {
+         
+          window.location = "./index.html"
+          //console.log(firebase.auth().currentUser)
+        })
+        .catch((error) =>
+        {
+          console.log(error)
+        })
+      }
+  
+      function signUpWithEmail(email,password)
+      {
+          firebase.auth().createUserWithEmailAndPassword(email, password)
+      .then((userCredential) => {
+        // Signed in 
+        window.location.href = "./index.html"
+        // ...
+      }).catch((error) => {
+        logInWithEmail(email,password)
+      });
+      }
+  
+      function logInWithEmail(email,password)
+      {
+          firebase.auth().signInWithEmailAndPassword(email, password)
+    .then((userCredential) => {
+      window.location.href = "./index.html"
+    })
+    .catch((error) => {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      console.log("i hate you")
+    });
+      }
+  
+      function signInAnon()
+      {
+          firebase.auth().signInAnonymously()
+    .then((userCredential) => {
+      window.location.href = "./index.html"
+    })
+    .catch((error) => {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      // ...
+    });
+  
+      }
+      
+  
+      //setTimeout(() => {
+        document.getElementById("loginMenu").style.filter = "blur(0px)"
+      //}, 1000);
+  
+      function emPW() //email password
+      {
+          signUpWithEmail(emailPrompt.value, pwPrompt.value)
+      }
+  </code></pre>
+  <p>loadpost.js</p>
+  <pre><code>
+    let inputField = document.getElementById("PostBodyInput")
+    let postMenu = document.getElementById("CreatePost")
+ inputField.addEventListener("keydown",function(e)
+ {
+     if(e.key == "Tab")
+     {
+       /*  e.preventDefault()
+         let doc = inputField.ownerDocument.defaultView;
+         let sel = doc.getSelection();
+         let range = sel.getRangeAt(0);
+ 
+         let tabNode = document.createTextNode("\u00a0\u00a0\u00a0\u00a0");
+         range.insertNode(tabNode);
+ 
+         range.setStartAfter(tabNode);
+         range.setEndAfter(tabNode); 
+         sel.removeAllRanges();
+         sel.addRange(range);
+         */
+        e.preventDefault();
+        let start = this.selectionStart;
+        let end = this.selectionEnd;
+ 
+     // set textarea value to: text before caret + tab + text after caret
+     this.value = this.value.substring(0, start) +
+       "\t" + this.value.substring(end);
+ 
+     // put caret at right position again
+     this.selectionStart =
+       this.selectionEnd = start + 1;
+   }
+ })
+ 
+ function submitPost()
+ {
+     const timestamp = Date.now();
+     let message = document.getElementById("PostBodyInput").value
+     let likes = 0
+     let username = auth.currentUser.displayName
+     let pfp = auth.currentUser.photoURL
+     try{
+        let handle = auth.currentUser.email.split("@")
+        handle = handle[0]
+        if (!/\S/.test(message)) { //white space
+          return
+        }
+        db.ref("Posts/" + timestamp).set({
+            message,
+            timestamp,
+            likes,
+            username,
+            handle,
+            pfp
+          });
+        hidePostMenu()
+        navBar.style.transform = 'translateY(0%)'
+        //console.log("Post was submited")
+        document.getElementById("PostBodyInput").value = ""
+     } catch(e) {
+       handle = null
+       if (!/\S/.test(message)) { //white space
+           return
+       }
+       db.ref("Posts/" + timestamp).set({
+           message,
+           timestamp,
+           likes,
+           username,
+           handle
+       });
+       hidePostMenu()
+       navBar.style.transform = 'translateY(0%)'
+       //console.log("Post was submited")
+       document.getElementById("PostBodyInput").value = ""  
+     }
+ }
+ 
+ function hidePostMenu()
+ {
+     postMenu.style.display = "none"
+ }
+ 
+ function showPostMenu()
+ {
+     postMenu.style.display = "none"
+ }
+ 
+ function closeMenu(){
+   var navbar = document.getElementById("navbar")
+   document.getElementById('CreatePost').style.display = 'none';
+   // document.getElementById("PostBodyInput").value = ""in
+   // navbar.style.display = 'in';
+   navBar.style.transform = 'translateY(0%)'
+ }
+  </code></pre>
+  <p>loadpost.js</p>
+  <pre><code class="language-js">
+    const postsRef = db.ref("Posts/")
+    //console.log(env.API_KEY)
+    let urlRegex = /(https?:\/\/[^\s]+)/g; //just detects links
+    let tildaRegex = /(```)/; //code block opener regex
+    //let postRegex = /(https?:\/\/[^\s]+)|(```)/g
+    let PostCol = document.getElementById("Posts")
+    postsRef.on("child_added", function(snapshot) {
+        const dbPost = snapshot.val();
+        let Username = dbPost.username
+        let post = document.createElement("div")
+        post.className = "Post"
+        PostCol.insertBefore(post, PostCol.firstChild)
+        
+        let userHold = document.createElement("div")
+        userHold.className = "UserHold"
+        post.appendChild(userHold)
+    
+        let pfp = document.createElement("img")
+        pfp.src = "images/icon.png"
+        if(dbPost.pfp)
+        {
+          pfp.src = dbPost.pfp
+        }
+        
+        pfp.className = "PostImg"
+        userHold.appendChild(pfp)
+    
+        let usernameAnchor = document.createElement("a")
+        usernameAnchor.innerText = Username
+        usernameAnchor.href = `profile.html?Name=${Username}`
+        userHold.appendChild(usernameAnchor)
+        let handle = dbPost.handle
+        let handleSpan = document.createElement("span")
+        handleSpan.innerText = "@" + handle
+        usernameAnchor.appendChild(document.createElement("br"))
+        usernameAnchor.appendChild(handleSpan)
+        handleSpan.className = "handle"
+        
+    
+        let postContent = document.createElement("pre")
+        let postText = urlify(dbPost.message)//(dbPost.message).split(tildaRegex)
+        //console.log(dbPost.likes)
+        //console.log(postText)
+        //postText = urlify(postText)
+        let isCodeOpen = false
+        let codeSection = null
+        postText = postText.filter(elm => elm)
+        for(let i=0;i<postText.length;i++)
+        {
+          //console.log(postText[i])
+          let dontAppend = false
+          //console.log(postText)
+          let textSection = document.createElement("span")
+          textSection.className = "message"
+          if(postText[i] == "```")
+          {
+            dontAppend = true
+            isCodeOpen = !isCodeOpen
+            if(isCodeOpen)
+            {
+              codeSection = document.createElement("code")
+              let codeSegment = postText[i+1].split(/\n|\r|\t|\s|[```]/g)
+              codeSegment = postText[i+1].split(/(?=[\n|\r|\t|\s])|(?<=[/\n|\r|\t|\s])/g)
+              //console.log(codeSegment)
+              
+              //if(codeSegment[0].match(/\n|\r|\t|\s/g))
+              //{
+                codeSection.classList.add(`language-${codeSegment[0]}`)
+                codeSegment.reverse()
+                codeSegment.pop()
+                codeSegment.reverse()
+                postText[i+1] = codeSegment.join("")
+                //codeSegment = codeSegment.join("")
+                //console.log(codeSegment)
+                //codeSegment.join('')
+                //for(let i=0;i<codeSegment.length;i++)
+                //{
+                  //postText.splice(i+1,0,codeSegment)
+                //}
+                
+              //}
+             // console.log(postText[i+1].match(/\n|\r|\t|\s|[```]/g))
+             // console.log(postText)
+              postContent.appendChild(codeSection)
+              
+            }
+            hljs.highlightElement(codeSection)
+            //codeSection.innerHTML = codeSection.innerHTML.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+          }
+          else if(isCodeOpen)
+          {
+            dontAppend = true
+            codeSection.append(postText[i]) //+= postText[i]
+          }
+          else if((postText[i] || '').split(urlRegex).length > 1)
+          {
+            textSection = document.createElement("a")
+            textSection.href = postText[i]
+            textSection.target = "_blank"
+            textSection.rel = "noopener"
+            if(postText[i].match(/^http[^\?]*.(jpg|jpeg|gif|png|tiff|bmp|webp)(\?(.*))?$/gmi) != null)
+              {
+                textSection = document.createElement("img")
+                textSection.src = postText[i]
+                textSection.className = "PostPhoto"
+              }
+          }
+          //console.log(postText[i].match(/\n|\r|\t|\s/g))
+          
+          
+          if(!dontAppend)
+          {
+            postContent.appendChild(textSection)
+            textSection.innerText = String(postText[i])
+          }
+          
+        }
+       //console.log
+        
+        post.appendChild(postContent)
+    
+        let postDate = document.createElement("span")
+        let dateString = new Date(dbPost.timestamp)
+    
+        const dd = String(dateString.getDate()).padStart(2, '0');
+        const mm = String(dateString.getMonth() + 1).padStart(2, '0'); //January is 0!
+        const yyyy = dateString.getFullYear();
+      
+        let likeRow = document.createElement("div")
+        let likes = document.createElement("span")
+        likes.className = "likes"
+        let likeButton = document.createElement("button")
+        likeButton.innerText = "Like" //remember, .innerHTML should be avoided when possible
+        likeButton.onclick = function(){likePost(dbPost.timestamp, dbPost)} 
+    
+      
+        likes.innerText = "Likes: " + String(dbPost.likes) + "\n"
+        let time =  dateString.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+        dateString = mm + '/' + dd + '/' + yyyy + " at " + time;
+        postDate.innerText = dateString
+        postDate.className = "PostDate"
+        likeRow.appendChild(postDate)
+        likeRow.appendChild(likes)
+        likeRow.appendChild(likeButton)
+        post.appendChild(likeRow)
+        post.id = dbPost.timestamp
+    })
+    
+    function likePost(timeID, postData){
+      //console.log(postData.likes)
+      firebase.database().ref("Posts/" + String(timeID)).update({
+        //message: postData.message,
+        //timestamp: timeID,
+        likes: parseInt(postData.likes) + 1
+      })
+    }
+    
+    function urlify(text) {
+      return text.split(urlRegex).flatMap(part => part.split(tildaRegex));
+    }
+    
+    postsRef.on('child_changed', function(snapshot){
+      let dbPost = snapshot.val()
+      let timestamp = dbPost.timestamp
+      document.getElementById(timestamp).querySelector(".likes").innerText = `Likes: ${dbPost.likes}\n`
+    });
+    
+  </code></pre>
+  <pre><code class="language-js">
+    const firebaseConfig = {
+      apiKey: "no",
+      authDomain: "twitterclone-aff2f.firebaseapp.com",
+      databaseURL: "https://twitterclone-aff2f-default-rtdb.firebaseio.com",
+      projectId: "twitterclone-aff2f",
+      storageBucket: "twitterclone-aff2f.appspot.com",
+      messagingSenderId: "1089185872675",
+      appId: "1:1089185872675:web:350744b5c281b8998b2a96",
+      measurementId: "G-7J6C100Q36"
+    };
+    const app = firebase.initializeApp(firebaseConfig);
+    //const analytics = firebase.getAnalytics(app);
+    const db = firebase.database();
+    const auth = firebase.auth()
+  </code></pre>
+
+  <pre><code class="language-python">
+from flask import Flask
+from dotenv import load_dotenv
+import requests
+from flask_cors import CORS
+
+load_dotenv()
+url = "https://api.nasa.gov/planetary/apod?api_key="
+import os
+
+key = os.environ["api_key"]
+app = Flask(__name__)
+CORS(app)
+
+@app.route("/api/nasa", methods=["GET"])
+def get_photo():
+    response = requests.get(url + key)
+    response.raise_for_status
+    #print("API response received")
+    data = response.json()
+    return data
+
+@app.route("/")
+def index():
+    return "no"
+app.run(host="0.0.0.0", port=8005, debug=True)
+
+  </code></pre>
+  <p>Week 0: I intially thought  the live review was a one time event however I came to learn I would be very wrong</p><br>
+  <p>Week 1-3: I spent most of my time learning how to use WSL, forking the student repo, and using python with IPYNB</p><br>
+  <p>Week 4-6: I spent most of these weeks just styling my website to have the blue theme and spinning icon It was more writing ipynb files and live review work</p><br>
+  <p>Week 7-12: These weeks were filled with work on Phoenix as seen above. I had prior experience with the database given my project, Crescent which was a faulty predecessor to my modern site </p>
+<h1>Example HW for team teaches</h1>
+  <img src="../assets/images/pyhw.png">
   </article>
     <footer class="footing">
       Jonathan Liu - Remind me to make a unique design for the footer
