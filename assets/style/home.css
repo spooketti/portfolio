@@ -431,6 +431,52 @@ path
     
     */
 }
+
+#SchoolProjects
+{
+    background-image: radial-gradient(rgba(2255,255,255,0.1) 9%,transparent 9%);
+    background-position: 0% 0%;
+    background-size: 12vmin 12vmin;
+    color:white;
+    display: flex;
+    font-family: 'Red Hat Display', sans-serif;
+    justify-content: center;
+}
+
+#SchoolProjectsContainer
+{
+    display:grid;
+    grid-template-columns: repeat(3,1fr);
+    background: linear-gradient(338deg, #474747, #1f1f1f);
+    background-size: 400% 400%;
+
+    -webkit-animation: SPCBG 55s ease infinite;
+    -moz-animation: SPCBG 55s ease infinite;
+    animation: SPCBG 55s ease infinite;
+    color:white;
+    padding: 2%;
+    gap:10px;
+    transition: 1s all;
+    
+}
+
+@-webkit-keyframes SPCBG {
+    0%{background-position:0% 9%}
+    50%{background-position:100% 92%}
+    100%{background-position:0% 9%}
+}
+@-moz-keyframes SPCBG {
+    0%{background-position:0% 9%}
+    50%{background-position:100% 92%}
+    100%{background-position:0% 9%}
+}
+@keyframes SPCBG {
+    0%{background-position:0% 9%}
+    50%{background-position:100% 92%}
+    100%{background-position:0% 9%}
+}
+
+
  
 
   
