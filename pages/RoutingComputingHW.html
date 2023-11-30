@@ -36,7 +36,7 @@
     <article>
     <h1 data-slideanim="slideRight" class="slideable">Routing and Computing<br><span style="font-size:small">Devadharson Sasikumar, Sri Surapaneni,Soham Kulkarni, Jonathan Liu: 11/30/23</span></h1>
     <h1 data-slideanim="slideLeft" class="slideable">Fault Tolerance<br><span style="font-size:small">Sri Surapaneni</span></h1>
-    <p>Routing, also known as Fault Tolerance is the practice of connecting devices together and the ability to share data between them.</p>
+    <p class="slideable" data-slideanim="slideLeft">Routing, also known as Fault Tolerance is the practice of connecting devices together and the ability to share data between them.</p>
     <p>In this representation, each computer will be represented by a letter and each connection between them being a line.</p>
     <img src="../assets/images/LinktedLaptops.png" class="slideable" data-slideanim="slideRight">
     <ul>
@@ -51,9 +51,9 @@
     <p>Do you know why the top image is not fault tolerant?</p>
     <button class="runButton" onclick="document.getElementById('q1').innerText = 'The computers cannot communicate for if they lose connection with each other, and the chain of communication is broken.' ">Reveal Answer</button>
     <p id="q1"></p>
-    <h2>How Redundancy Helps Fault Tolerance </h2>
+    <h2 class="slideable" data-slideanim="slideRight">How Redundancy Helps Fault Tolerance </h2>
     <p>In this diagram, each computer is linked to another computer multiple times.</p>
-    <img src="../assets/images/complexRoute.jpg">
+    <img class="slideable" data-slideanim="slideLeft" src="../assets/images/complexRoute.jpg">
     <p>In this representation if one of the computer's communication lines is severed, it is more fault tolerant for it has other routes it can take to reach the same computer. <br>
     If a computer has multiple routes to the same computer it is conisdered "redundant"; however, that is not a bad thing, because with only one route the network may be slower, and it is safer.</p>
     <ul>
@@ -61,14 +61,14 @@
         <li>Multiple Paths</li>
     </ul>
     <p>In this diagram, is the network fault tolerant if we broke one communication line in any location?</p>
-    <img src="../assets/images/routPH1.png">
+    <img src="../assets/images/routPH1.png" class="slideable" data-slideanim="slideOpacity">
     <br>
     <button class="runButton" onclick="document.getElementById('q2').innerText = 'Yes, for there is redundancy allowing for each device to remain connected'">Reveal Answer</button>
     <p id="q2"></p>
     <p>In this diagram, is the network fault tolerant if one of any of the lines break</p>
-    <img src="../assets/images/routPH1.png">
+    <img class="slideable" data-slideanim="slideRight" src="../assets/images/routPH1.png">
     <br>
-    <button class="runButton" onclick="document.getElementById('q3').innerText = 'No, if line CF is severed, the network can no longer reach device F'">Reveal Answer</button>
+    <button class="runButton slideable"  data-slideanim="slideOpacity" onclick="document.getElementById('q3').innerText = 'No, if line CF is severed, the network can no longer reach device F'">Reveal Answer</button>
     <p id="q3"></p>
     <p>All of this represents the network and internet, the letters represent devices such as our computers in class right now, and the wires are inside of our computer, redundancy increases reliability on the internet and scales it to more people.
       <br>
@@ -94,7 +94,7 @@
     <button class="runButton" onclick="document.getElementById('SK1').innerText = '(C because information in the wires take the fastest route possible, which makes the network strong and fast)'">Reveal Answer</button>
     <p id="SK1"></p>
     <p>Here is another example, what would make this network fault-tolerant?</p>
-    <img src="../assets//images/SK2.png">
+    <img src="../assets/images/SK2.png">
     <pre>
       A, because if you remove the wire, then there will be no connection, but if you add it, there are multiple paths and you would create a strong, fast network
 
@@ -112,13 +112,13 @@ Fault tolerance is a really important thing in the internet as it creates multip
         <li>Distributed computing: Connecting multiple computers over a network to solve a common problem.</li>
       </ul>
       Why use it?
-      <ul>
+      <ul class="slideable" data-slideanim="slideLeft">
       <li>Faster execution time</li>
       <li>Scalability: Handle larger and more complex problems</li>
       <li>Increased efficiency: Utilize resources more effectively</li>
       </ul>
       Types of Parallelism
-      <ul>
+      <ul class="slideable" data-slideanim="slideRight">
         <li>Bit-level parallelism: Executing multiple instructions in a single clock cycle</li>
         <li>Instruction-level parallelism: Executing multiple instructions in parallel within a single processor</li>
         <li>Task-level parallelism: Distributing different tasks among multiple processors or computers</li>
@@ -134,6 +134,7 @@ Fault tolerance is a really important thing in the internet as it creates multip
         </li>
       </ul>
       Challenges of parallel computing
+      <img src="https://cdn.kastatic.org/ka-perseus-images/0db827a36e9287ee9c130cf17610faaed276b931.svg">
       <ul>
         <li>Communication overhead: Time spent exchanging data between processors
         </li>
@@ -156,7 +157,7 @@ Fault tolerance is a really important thing in the internet as it creates multip
       <li>Limited hardware: Common in older computers or embedded systems</li>
       <li>Task dependencies: When tasks depend on the output of previous tasks</li>
       <li>Total execution time is the sum of individual task execution times</li>
-      <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.researchgate.net%2Ffigure%2FSequential-computing-and-parallel-computing_fig2_369139153&psig=AOvVaw1m6tYWhNili2j9H1ukxDPF&ust=1701470110914000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCMCEi5_k7IIDFQAAAAAdAAAAABAD">
+      <img src="https://www.researchgate.net/publication/367162510/figure/fig3/AS:11431281113220233@1673803320022/Parallel-vs-sequential-programming.png">
       </ul>
 
       <pre>
@@ -166,7 +167,7 @@ Fault tolerance is a really important thing in the internet as it creates multip
         Done on the same computer
         Parallel consists of parallel portion and sequential portion
         Comparing efficiency = comparing the time it takes to perform the task
-        <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.heavy.ai%2Ftechnical-glossary%2Fparallel-computing&psig=AOvVaw0c0YKPAvFt2oICLWpVsHh2&ust=1701469912226000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCKjfvMDj7IIDFQAAAAAdAAAAABAD">
+        <img src="https://hpc.llnl.gov/sites/default/files/shared_mem.gif">
       </pre>
 
       <pre>
@@ -207,9 +208,12 @@ Takes longer based no network
 <pre>
   Question 1: What is parallel computing?
   Question 2: If there is a computer with 3 cores that can each take one task, and the tasks are 25ms, 632ms and 100ms in run time respectively, how long will the program take to run?
-  Question 3: Is sequential or parallel computing more efficient, and why?  
+  Question 3: Is sequential or parallel computing more efficient, and why?
+  Question 4: What is the term called when a network has multiple paths leading up to one destination? (Used in fault-tolerant systems)
+  <img src="../assets/imagees/ftolhw.png">
+  Question 5: Using the image above, is this fault tolerant?
 </pre>
-    <footer class="footing">
+  <footer class="footing">
     
     </footer>
     <script src="../assets/js/page.js"></script>
