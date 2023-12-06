@@ -5,3 +5,9 @@ add more content
 make 404 have a randomized lele photo
 make 404 have a midi editor
 write about robotics
+write about java modding (fabric)
+
+more article ideas
+roblox (the time i spent coding not the person (sorry if i am opening old wounds))
+maybe rewrite some of the old arduino ones (they're just code)
+add a footer
