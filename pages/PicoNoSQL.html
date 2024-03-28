@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>PicoCTF 2024 No SQL Injection</title>
+  <link rel="stylesheet" href="../assets/style/page.css">
+  <link rel="stylesheet" href="../assets/style/slideAnim.css">
+  <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+
+  <!-- and it's easy to individually load additional languages -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/arduino.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/python.min.js"></script>
+
+  <script>hljs.highlightAll();</script>
+
+</head>
+
+<body>
+  <div class="loadModal">
+
+  </div>
+  <nav id="header">
+    <div class="headerDiv">
+      <div id="home" onclick="window.location.href = '../index.html'">
+        Jonathan Liu
+      </div>
+    </div>
+    <div class="headerDiv" id="redMotButton" onclick="toggleMot()">
+      error
+    </div>
+  </nav>
+
+  <div class="articleParallax" style="background-image:url('https://webimages.mongodb.com/_com_assets/cms/kuzt9r42or1fxvlq2-Meta_Generic.png'); height:80%;"><span
+      class="artParText slideable" data-slideanim="slideOpacity">A Guide to Solving PicoCTF 2024's No SQL
+      Injection</span></div>
+  <article>
+    <h1 data-slideanim="slideRight" class="slideable">PicoCTF 2024 No SQL Injection<br><span
+        style="font-size:small">Jonathan Liu: 3/27/24</span></h1>
+    <p class="slideable" data-slideanim="slideLeft">PicoCTF, a "capture the flag" cybersecurity competition just
+      finished it's 2024 competition, so now that the event has ended, here is a guide on how to solve one of my
+      favorite puzzles, No SQL Injection!</p>
+    <img src="../assets/images/pico/0.png" style="width:50%;" data-slideanim="slideOpacity" class="slideable">
+    <h1 data-slideanim="slideLeft" class="slideable">Step 1: Looking Inside</h1>
+    <p data-slideanim="slideRight" class="slideable">PicoCTF is all about trying to find and exploit a vulnerability and get the flag, a password that you submit on
+      the PicoCTF website.
+      <br>
+      On the puzzle page we are given the source code and the website to recieve the flag on. On the website we are
+      greeted by a login page. We can submit an email and a password, this on it's own is pretty useless so let's
+      <i>look inside</i> the source code!<br>
+      <img src="../assets/images/pico/1.png" style="width:50%;" data-slideanim="slideOpacity" class="slideable">
+    </p>
+    <p data-slideanim="slideRight" class="slideable">It's pretty obvious that we need to find some way to login to the website, and given our puzzle name "No SQL
+      Injection" we are going to inject code into the login page to force us in. Let's begin by looking through the
+      files of the source code that might be related to logging in or finding any possible credentials that might help
+      us find the flag. The type of files we want to find are anything related to a database.</p>
+      <img src="../assets/images/pico/2.png" style="width:50%;" data-slideanim="slideRight" class="slideable">
+    <p data-slideanim="slideLeft" class="slideable">Files route.ts, user.ts, and seed.ts look pretty specific! Lets take a look at seed.ts</p>
+    <h1 data-slideanim="slideOpacity" class="slideable">Step 2: Finding A Vulnerability</h1>
+    <pre>
+      <code class="typescript">
+import User from "../models/user";
+
+
+export const seedUsers = async (): Promise<void> => {
+  
+  try {
+
+     const users = await User.find({email: "joshiriya355@mumbama.com"});
+      if (users.length > 0) {
+        return;
+      }
+    const newUser = new User({
+      firstName: "Josh",
+      lastName: "Iriya",
+      email: "joshiriya355@mumbama.com",
+      password: process.env.NEXT_PUBLIC_PASSWORD as string
+    });
+    await newUser.save();
+  } catch (error) {
+    throw new Error("Some thing went wrong")
+  }
+};
+      </code>
+    </pre>
+<p data-slideanim="slideRight" class="slideable">Looks like we found our email, "joshiriya355@mumbama.com" as it's already an account in the database. Let's check user.ts</p>
+<pre><code class="typescript">
+import mongoose, { Schema, Document, models } from "mongoose";
+
+export interface UserInterface extends Document {
+  email: string;
+  firstName: string;
+  lastName: string;
+  password: string;
+}
+
+const UserSchema: Schema = new Schema({
+  email: { type: String, required: true, unique: true },
+  firstName: { type: String, required: true },
+  lastName: { type: String, required: true },
+  password: { type: String, required: true },
+  token: { type: String, required: false ,default: "{{Flag}}"},
+});
+const User = models.User || mongoose.model<UserInterface>("User", UserSchema);
+
+export default User;
+
+</code></pre>
+<p data-slideanim="slideRight" class="slideable">Awesome! The database schema for this has a "token" likely to be recieved on the front-end in a json response. We'll likely be able to find our token in the network section of our devtools. Finally let's inspect route.ts</p>
+<pre>
+  <code class="typescript">
+import User from "@/models/user";
+import { connectToDB } from "@/utils/database";
+import { seedUsers } from "@/utils/seed";
+
+export const POST = async (req: any) => {
+  const { email, password } = await req.json();
+  try {
+    await connectToDB();
+    await seedUsers();
+    const users = await User.find({
+      email: email.startsWith("{") && email.endsWith("}") ? JSON.parse(email) : email,
+      password: password.startsWith("{") && password.endsWith("}") ? JSON.parse(password) : password
+    });
+
+    if (users.length < 1)
+      return new Response("Invalid email or password", { status: 401 });
+    else {
+      return new Response(JSON.stringify(users), { status: 200 });
+    }
+  } catch (error) {
+    return new Response("Internal Server Error", { status: 500 });
+  }
+};
+
+  </code>
+</pre>
+<p data-slideanim="slideRight" class="slideable">Do you see that? <pre><code> password: password.startsWith("{") && password.endsWith("}") ? JSON.parse(password) : password</code></pre>, JSON.parse()?</p>
+<p data-slideanim="slideLeft" class="slideable">And it gets parsed when the password starts and ends with a curly brace? <br> We found our vulnerability.</p>
+
+<h1 data-slideanim="slideOpacity" class="slideable">Step 3: Exploitation</h1>
+<p>This is a No SQL Injection, but given JSON.parse, it's likely a MongoDB injection. Here's our payload, <pre><code>{"$ne": "test"}</code></pre>. $ne means not equal to and then "test" is just to check if it's not equal to test, which it is not.</p>
+<p>Let's inject it.</p>
+<img src="../assets/images/pico/3.png" style="width:50%;">
+<p>We're in. But nowe we're greeted by some generic user page that has no flag on it. This is just the default page.tsx in admin!<br>
+Remember, we recieve our account credentials from the server, you know what else we recieve? That token.</p>
+<p>We can see what the browser recieves in the network tab of devtools.</p>
+<img src="../assets/images/pico/4.png" style="width:50%;">
+<p>Bingo.<br>We recieved the payload "token":"cGljb0NURntqQmhEMnk3WG9OelB2XzFZeFM5RXc1cUwwdUk2cGFzcWxfaW5qZWN0aW9uX2FmNjczMjhkfQ=="<br>That's not our flag... PicoCTF flags are in format picoCTF{flag}. But the == sign on the end gives it away, this is encoded in Base64.</p>
+<p>After running the token value through a base64 decoder we recieve the flag,</p>
+<code>picoCTF{jBhD2y7XoNzPv_1YxS9Ew5qL0uI6pasql_injection_af67328d}</code>
+<h2>Note: Do not submit the flag I recieved! There have been instances of Pico disqualifying teams who use other team's flags, and although the competition is over obviously still don't risk it!</h2>
+<p>That is my solution to solving PicoCTF 2024's No SQL Injection, thank you for reading this solution guide and I hope it helps you with any future CTF's or learning how to make your own systems more secure.</p>
+
+
+
+
+  </article>
+  <footer class="footing">
+    Jonathan Liu
+  </footer>
+  <script src="../assets/js/page.js"></script>
+</body>
+
+</html>
