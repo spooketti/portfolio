@@ -32,7 +32,7 @@ const observer = new IntersectionObserver((entries) =>
         entry.target.style.animation = null;
         if(entry.isIntersecting && !spinning && !reducedMotion)
         {
-
+            window.setTimeout(() => observer.unobserve(entry.target), 1000);
             switch(entry.target.dataset.slideanim)
             {
                 case "slideRight":
