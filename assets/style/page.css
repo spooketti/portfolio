@@ -125,6 +125,32 @@ article p
     background-color: rgb(6, 172, 6);
 }
 
+img
+{
+    cursor: pointer;
+}
 
+.noExpand
+{
+    cursor:unset !important;
+}
 
-/*it didnt push but why */
+#expandBG
+{
+    position:fixed;
+    z-index: 8;
+    left:0;
+    top:0;
+    height:100%;
+    width:100%;
+    background-color: rgba(0, 0, 0, 0.634);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#expandedIMG
+{
+    height:404px;
+}
