@@ -12,10 +12,12 @@ if(!img.classList.contains("noExpand"))
     expandBG.id = "expandBG"
     let expandedIMG = document.createElement("img")
     expandedIMG.src = img.src
+    expandedIMG.style.animation = "imageExpand 1s cubic-bezier(.08,1.9,1,.86) forwards"
     expandedIMG.classList.add("noExpand")
     expandBG.onclick = function()
     {
-       expandBG.remove()
+       expandBG.style.animation = "closeImage 1s cubic-bezier(.47,.72,.86,.09) forwards"
+       window.setTimeout(function() {expandBG.remove()},1100)
     }
     document.body.appendChild(expandBG)
     expandBG.appendChild(expandedIMG)

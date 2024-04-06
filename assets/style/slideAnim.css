@@ -41,3 +41,28 @@
         opacity:100%;
     }
 }
+
+@keyframes imageExpand
+{
+    0%
+    {
+        transform:scale(0%);
+    }
+    100%
+    {
+        transform: scale(100%);
+    }
+}
+
+@keyframes closeImage
+{
+    0%
+    {
+        opacity:100%;
+    }
+    100%
+    {
+        opacity: 0%;
+    }
+}
+

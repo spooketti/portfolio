@@ -153,4 +153,5 @@ img
 #expandedIMG
 {
     height:404px;
+    animation: imageExpand 1s cubic-bezier(.47,.72,.86,.09) forwards;
 }
