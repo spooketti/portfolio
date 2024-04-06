@@ -69,6 +69,7 @@
       is the software for the control.</p>
     <pre>
       <code class="c++">
+        
           #include&lt;LiquidCrystal.h&gt;
           #define X A0;
           #define Y A1;
@@ -163,8 +164,8 @@
 
     <h1>Phase 2: Java Programming and the Minecraft Fabric API</h1>
     <p>Whenever I decide to make a Minecraft mod my typically go to pick is Fabric, a modding API. I started the
-      Minecraft portion at <a href="https://fabricmc.net/develop/template/">this address</a>Which made creating all of
-      the boilerplate easy.<br>After a long brain storming section with my friend, Netherbacon who helped me build the
+      Minecraft portion at <a href="https://fabricmc.net/develop/template/">this address</a> which made creating all of
+      the boilerplate easy.<br>After a long brain storming session with my friend, Netherbacon who helped me build the
       map, we came up with 4 simple puzzles to be done in Minecraft.</p>
     <p>The concepts were
     <ul>
@@ -182,7 +183,7 @@
 
     <h2>Green Puzzle</h2>
     <p>So the plan as of now for the zombie, is just to spawn a zombie in
-      a set coordinate that prevents them from leaving, and increase their health so thye have more time to burn, as
+      a set coordinate that prevents them from leaving, and increase their health so they have more time to burn, as
       when they die from the burning, the puzzle is failed.<br>The plan now is simple. Create an item that spawns
       the zombie, set the coordinate, and modify the health. Then if a zombie already exists within the coordinates,
       kill them.</p>
@@ -195,7 +196,7 @@
         zombie.setHealth(50.0f);
         world.spawnEntity(zombie);
      </code></pre>
-    <p>However; right now there is no practical way to check in the item itself, so the solution is to use a Mixin, or a
+    <p>However; right now there is no practical way to check for death in the item itself, so the solution is to use a Mixin, or a
       injection into the onDeath method.</p>
     <pre><code>
 @Mixin(LivingEntity.class)
@@ -235,7 +236,7 @@ public class ZombieDie {
       out.
       One possible causation of this could be either faulty wiring or a lack of a resistor
       despite the digital pins operating at 3.3V. <br>
-      I know this was not a softawre fault as the same code was copy and pasted into Tinkercad and it worked perfectly
+      I know this was not a software fault as the same code was copy and pasted into Tinkercad and it worked perfectly
       in simulation.
     </p>
     <img src="../assets/images/confession/simWork.png" style="width:80%">
@@ -245,7 +246,7 @@ public class ZombieDie {
     <img src="../assets/images/confession/keyboard.png" style="width:80%">
     <br>
     <p>
-      <b>My board is not supported</b><br>
+      <b>My board is not natively supported with Keyboard.h</b><br>
     <p>But I suppose the weeks on end and nights I stayed up were worth it...</p>
     <img src="../assets/images/confession/comingsoon.png" style="width:30%">
     </p>

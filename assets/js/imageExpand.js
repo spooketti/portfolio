@@ -29,3 +29,22 @@ if(!img.classList.contains("noExpand"))
 
 }
 });
+window.addEventListener('DOMContentLoaded', () => {
+    const cblocks = document.querySelectorAll('.hljs');
+cblocks.forEach(codeblock => {
+  console.log("fu")
+let btn = document.createElement("button")
+let span = document.createElement("span")
+btn.classList.add("copyCodeButton")
+span.classList.add("material-symbols-outlined")
+span.innerText = "content_copy"
+codeblock.insertBefore(btn,codeblock.firstChild);
+btn.appendChild(span)
+btn.onclick = function(){
+    span.innerText = ""
+    navigator.clipboard.writeText(codeblock.innerText)
+    span.innerText = "check"
+    window.setTimeout(function(){span.innerText = "content_copy"},1000)
+}
+});
+});
