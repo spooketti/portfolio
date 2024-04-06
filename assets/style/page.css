@@ -152,6 +152,6 @@ img
 
 #expandedIMG
 {
-    height:404px;
+    height:510px;
     animation: imageExpand 1s cubic-bezier(.47,.72,.86,.09) forwards;
 }
